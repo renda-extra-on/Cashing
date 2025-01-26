@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Site</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding-bottom: 80px; /* Espaço para o cabeçalho inferior */
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 20px 25px;  /* Tamanho ajustado */
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        header img {
+            width: 50px;  /* Aumento do tamanho do logo */
+            height: 50px; /* Aumento do tamanho do logo */
+            margin-right: 15px;
+        }
+
+        header .title {
+            font-size: 28px;  /* Tamanho maior do título */
+            font-weight: bold;
+            color: #2ecc71;
+        }
+
+        main {
+            text-align: center;
+            margin-top: 120px; /* Ajuste para dar mais espaço ao topo */
+            padding: 25px;
+            width: 100%;
+        }
+
+        main h1 {
+            font-size: 32px;  /* Aumento do título principal */
+            margin-bottom: 15px;
+        }
+
+        main p {
+            font-size: 18px;  /* Tamanho do texto maior */
+            line-height: 1.6;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;  /* Aumento do espaçamento entre os cards */
+            margin-top: 50px;
+            width: 100%;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 12px;  /* Bordas mais arredondadas */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra mais forte */
+            width: 250px;  /* Tamanho maior dos cards */
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            margin-bottom: 40px;
+        }
+
+        .card:hover {
+            transform: scale(1.08); /* Efeito de hover mais intenso */
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 12px; /* Bordas arredondadas nas imagens */
+            margin-bottom: 20px;  /* Aumento da margem inferior */
+        }
+
+        .card h3 {
+            font-size: 24px;  /* Aumento do tamanho do título nos cards */
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 18px;  /* Tamanho maior da descrição */
+            color: #666;
+        }
+
+        .card button {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 8px;  /* Bordas mais arredondadas */
+            padding: 12px 20px;  /* Aumento do padding */
+            font-size: 18px;  /* Tamanho maior da fonte */
+            cursor: pointer;
+            margin-top: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: #27ae60;
+        }
+
+        .card a {
+            text-decoration: none;
+        }
+
+        .footer-header {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            padding: 20px 0;  /* Aumento do padding */
+            background-color: #ffffff;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .footer-header img {
+            width: 60px;  /* Aumento do tamanho das imagens */
+            height: 60px;
+            border-radius: 12px;  /* Bordas arredondadas nas imagens */
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            header .title {
+                font-size: 24px;
+            }
+
+            .card {
+                width: 220px;
+                padding: 25px;
+            }
+
+            .card h3 {
+                font-size: 22px;
+            }
+
+            .footer-header {
+                padding: 15px 0;
+            }
+
+            .footer-header img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header .title {
+                font-size: 20px;
+            }
+
+            main h1 {
+                font-size: 28px;
+            }
+
+            main p {
+                font-size: 16px;
+            }
+
+            .card {
+                width: 180px;
+                padding: 20px;
+            }
+
+            .card h3 {
+                font-size: 18px;
+            }
+
+            .footer-header {
+                padding: 12px 0;
+            }
+
+            .footer-header img {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://static-00.iconduck.com/assets.00/square-cash-icon-512x512-392jabay.png" alt="Logo">
+        <div class="title" id="pointsDisplay">0</div>
+    </header>
+
+    <main>
+        <h1>Bem-vindo ao Site</h1>
+        <p>Este é um site simples, projetado para dispositivos móveis com um design limpo e moderno.</p>
+
+        <div class="cards-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="https://via.placeholder.com/200" alt="Card 1">
+                <h3>Card 1</h3>
+                <p>Descrição do card 1.</p>
+                <a href="outra_pagina.html" target="_blank" id="btn1" onclick="window.location.href='outra_pagina.html'; addPoints(50, true, 'btn1'); return false;">
+                    <button id="btn1Btn">Pontos: 50</button>
+                </a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="https://via.placeholder.com/200" alt="Card 2">
+                <h3>Card 2</h3>
+                <p>Descrição do card 2.</p>
+                <a href="outra_pagina.html" target="_blank" id="btn2" onclick="window.location.href='outra_pagina.html'; addPoints(100, true, 'btn2'); return false;">
+                    <button id="btn2Btn">Pontos: 100</button>
+                </a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <img src="https://via.placeholder.com/200" alt="Card 3">
+                <h3>Card 3</h3>
+                <p>Descrição do card 3.</p>
+                <a href="outra_pagina.html" target="_blank" id="btn3" onclick="window.location.href='outra_pagina.html'; addPoints(150, true, 'btn3'); return false;">
+                    <button id="btn3Btn">Pontos: 150</button>
+                </a>
+            </div>
+
+            <!-- Card 4 (não adiciona saldo) -->
+            <div class="card">
+                <img src="https://via.placeholder.com/200" alt="Card 4">
+                <h3>Card 4</h3>
+                <p>Descrição do card 4.</p>
+                <a href="outra_pagina.html" target="_blank" id="btn4" onclick="window.location.href='outra_pagina.html'; return false;">
+                    <button id="btn4Btn">Pontos: 200</button>
+                </a>
+            </div>
+
+            <!-- Card 5 (não adiciona saldo) -->
+            <div class="card">
+                <img src="https://via.placeholder.com/200" alt="Card 5">
+                <h3>Card 5</h3>
+                <p>Descrição do card 5.</p>
+                <a href="outra_pagina.html" target="_blank" id="btn5" onclick="window.location.href='outra_pagina.html'; return false;">
+                    <button id="btn5Btn">Pontos: 250</button>
+                </a>
+            </div>
+
+            <!-- Card 6 (não adiciona saldo) -->
+            <div class="card">
+                <img src="https://static-00.iconduck.com/assets.00/square-cash-icon-512x512-392jabay.png" alt="Card 6">
+                <h3>Card 6</h3>
+                <p>Descrição do card 6.</p>
+                <a href="tarefas.html" target="_blank" id="btn6" onclick="window.location.href='https://example.com'; return false;">
+                    <button id="btn6Btn">Pontos: 50</button>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Cabeçalho Inferior -->
+    <div class="footer-header">
+        <a href="pagina1.html" target="_blank">
+            <img src="https://via.placeholder.com/50" alt="Imagem 1">
+        </a>
+        <a href="pagina2.html" target="_blank">
+            <img src="https://via.placeholder.com/50" alt="Imagem 2">
+        </a>
+        <a href="pagina3.html" target="_blank">
+            <img src="https://static-00.iconduck.com/assets.00/square-cash-icon-512x512-392jabay.png" alt="Imagem 3">
+        </a>
+    </div>
+
+    <script>
+        let totalPoints = localStorage.getItem('totalPoints') ? parseInt(localStorage.getItem('totalPoints')) : 0;
+        document.getElementById('pointsDisplay').textContent = totalPoints;
+
+        function addPoints(points, showPoints, buttonId) {
+            totalPoints += points;
+            localStorage.setItem('totalPoints', totalPoints);
+
+            if (showPoints) {
+                document.getElementById('pointsDisplay').textContent = totalPoints;
+            }
+
+            setTimeout(function() {
+                document.getElementById(buttonId + 'Btn').disabled = true;
+                localStorage.setItem(buttonId, 'disabled');
+            }, 200);
+        }
+
+        window.onload = function() {
+            ['btn1', 'btn2', 'btn3', 'btn4', 'btn5', 'btn6'].forEach(function(buttonId) {
+                if (localStorage.getItem(buttonId) === 'disabled') {
+                    document.getElementById(buttonId + 'Btn').disabled = true;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
