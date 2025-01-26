@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Tarefas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #2ecc71;
+        }
+
+        .header p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .tasks-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .task {
+            background-color: #fff;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .task img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .task .info {
+            flex: 1;
+        }
+
+        .task h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .task p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .task button {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .task button:hover {
+            background-color: #27ae60;
+        }
+
+        /* Responsividade para telas pequenas */
+        @media (max-width: 768px) {
+            .task {
+                width: 100%;
+                max-width: 100%;
+                flex-direction: row; /* Imagem à esquerda e texto à direita também em celulares */
+                align-items: center;
+            }
+
+            .task img {
+                margin-bottom: 0; /* Remove o margin inferior */
+            }
+
+            .task button {
+                align-self: center;
+            }
+        }
+
+        /* Estilo para iPhones em tela pequena */
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+
+            .task {
+                width: 100%;
+                max-width: 100%;
+                flex-direction: column; /* Coloca imagem em cima e texto embaixo em telas muito pequenas */
+                align-items: center;
+            }
+
+            .task img {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .task button {
+                width: 100%;
+                padding: 12px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Página de Tarefas</h1>
+        <p>Aqui você pode gerenciar suas tarefas diárias. Abaixo estão as tarefas pendentes, com a opção de marcar como concluída. Cada tarefa pode ser aberta em uma nova página ao pressionar o botão correspondente.</p>
+    </div>
+
+    <!-- Tasks Container -->
+    <div class="tasks-container">
+        <!-- Task 1 -->
+        <div class="task">
+            <img src="https://via.placeholder.com/80" alt="Tarefa 1">
+            <div class="info">
+                <h3>Tarefa 1</h3>
+                <p>Descrição da tarefa 1. Esta é uma tarefa que precisa ser concluída com cuidado e atenção.</p>
+            </div>
+            <button onclick="window.open('https://example.com/tarefa1', '_blank')">Abrir Tarefa 1</button>
+        </div>
+
+        <!-- Task 2 -->
+        <div class="task">
+            <img src="https://via.placeholder.com/80" alt="Tarefa 2">
+            <div class="info">
+                <h3>Tarefa 2</h3>
+                <p>Descrição da tarefa 2. Lembre-se de verificar todos os detalhes antes de finalizar.</p>
+            </div>
+            <button onclick="window.open('https://example.com/tarefa2', '_blank')">Abrir Tarefa 2</button>
+        </div>
+
+        <!-- Task 3 -->
+        <div class="task">
+            <img src="https://via.placeholder.com/80" alt="Tarefa 3">
+            <div class="info">
+                <h3>Tarefa 3</h3>
+                <p>Descrição da tarefa 3. Certifique-se de revisar todas as informações antes de finalizar.</p>
+            </div>
+            <button onclick="window.open('https://example.com/tarefa3', '_blank')">Abrir Tarefa 3</button>
+        </div>
+
+        <!-- Task 4 -->
+        <div class="task">
+            <img src="https://via.placeholder.com/80" alt="Tarefa 4">
+            <div class="info">
+                <h3>Tarefa 4</h3>
+                <p>Descrição da tarefa 4. Esta tarefa requer atenção especial e revisão no final.</p>
+            </div>
+            <button onclick="window.open('https://example.com/tarefa4', '_blank')">Abrir Tarefa 4</button>
+        </div>
+
+        <!-- Task 5 -->
+        <div class="task">
+            <img src="https://via.placeholder.com/80" alt="Tarefa 5">
+            <div class="info">
+                <h3>Tarefa 5</h3>
+                <p>Descrição da tarefa 5. Não se esqueça de verificar todos os detalhes antes de concluir.</p>
+            </div>
+            <button onclick="window.open('https://example.com/tarefa5', '_blank')">Abrir Tarefa 5</button>
+        </div>
+
+        <!-- Task 6 -->
+        <div class="task">
+            <img src="https://via.placeholder.com/80" alt="Tarefa 6">
+            <div class="info">
+                <h3>Tarefa 6</h3>
+                <p>Descrição da tarefa 6. Certifique-se de ter tudo pronto antes de começar.</p>
+            </div>
+            <button onclick="window.open('https://example.com/tarefa6', '_blank')">Abrir Tarefa 6</button>
+        </div>
+
+        <!-- Task 7 -->
+        <div class="task">
+            <img src="https://via.placeholder.com/80" alt="Tarefa 7">
+            <div class="info">
+                <h3>Tarefa 7</h3>
+                <p>Descrição da tarefa 7. Revise todos os passos antes de finalizar.</p>
+            </div>
+            <button onclick="window.open('https://example.com/tarefa7', '_blank')">Abrir Tarefa 7</button>
+        </div>
+
+        <!-- Task 8 -->
+        <div class="task">
+            <img src="https://via.placeholder.com/80" alt="Tarefa 8">
+            <div class="info">
+                <h3>Tarefa 8</h3>
+                <p>Descrição da tarefa 8. Não se esqueça de validar as informações.</p>
+            </div>
+            <button onclick="window.open('https://example.com/tarefa8', '_blank')">Abrir Tarefa 8</button>
+        </div>
+
+        <!-- Task 9 -->
+        <div class="task">
+            <img src="https://via.placeholder.com/80" alt="Tarefa 9">
+            <div class="info">
+                <h3>Tarefa 9</h3>
+                <p>Descrição da tarefa 9. Lembre-se de fazer uma revisão detalhada.</p>
+            </div>
+            <button onclick="window.open('https://example.com/tarefa9', '_blank')">Abrir Tarefa 9</button>
+        </div>
+
+        <!-- Task 10 -->
+        <div class="task">
+            <img src="https://via.placeholder.com/80" alt="Tarefa 10">
+            <div class="info">
+                <h3>Tarefa 10</h3>
+                <p>Descrição da tarefa 10. Certifique-se de que todos os requisitos foram atendidos.</p>
+            </div>
+            <button onclick="window.open('https://example.com/tarefa10', '_blank')">Abrir Tarefa 10</button>
+        </div>
+
+    </div>
+
+</body>
+</html>
