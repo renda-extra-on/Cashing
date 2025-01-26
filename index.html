@@ -67,90 +67,39 @@
         }
 
         .cards-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;  /* Aumento do espaçamento entre os cards */
-            margin-top: 50px;
-            width: 100%;
-        }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;  /* Ajuste no espaçamento */
+    margin-top: 50px;
+    width: 100%;
+}
 
-        .card {
-            background-color: #fff;
-            border-radius: 12px;  /* Bordas mais arredondadas */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra mais forte */
-            width: 250px;  /* Tamanho maior dos cards */
-            padding: 30px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            margin-bottom: 40px;
-        }
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: calc(50% - 20px);  /* Exibe dois cards lado a lado */
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    margin-bottom: 40px;
+}
 
-        .card:hover {
-            transform: scale(1.08); /* Efeito de hover mais intenso */
-        }
+@media (max-width: 768px) {
+    .card {
+        width: 100%;  /* Faz os cards ocuparem 100% da largura em telas menores */
+        padding: 25px;
+    }
+}
 
-        .card img {
-            width: 100%;
-            border-radius: 12px; /* Bordas arredondadas nas imagens */
-            margin-bottom: 20px;  /* Aumento da margem inferior */
-        }
+@media (max-width: 480px) {
+    .card {
+        width: 100%;  /* Faz os cards ocuparem 100% da largura em telas muito pequenas */
+        padding: 20px;
+    }
+}
 
-        .card h3 {
-            font-size: 24px;  /* Aumento do tamanho do título nos cards */
-            margin-bottom: 12px;
-        }
-
-        .card p {
-            font-size: 18px;  /* Tamanho maior da descrição */
-            color: #666;
-        }
-
-        .card button {
-            background-color: #2ecc71;
-            color: white;
-            border: none;
-            border-radius: 8px;  /* Bordas mais arredondadas */
-            padding: 12px 20px;  /* Aumento do padding */
-            font-size: 18px;  /* Tamanho maior da fonte */
-            cursor: pointer;
-            margin-top: 18px;
-            transition: background-color 0.3s ease;
-        }
-
-        .card button:hover {
-            background-color: #27ae60;
-        }
-
-        .card a {
-            text-decoration: none;
-        }
-
-        .footer-header {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            width: 100%;
-            padding: 20px 0;  /* Aumento do padding */
-            background-color: #ffffff;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            z-index: 1000;
-        }
-
-        .footer-header img {
-            width: 60px;  /* Aumento do tamanho das imagens */
-            height: 60px;
-            border-radius: 12px;  /* Bordas arredondadas nas imagens */
-        }
-
-        /* Media Queries */
-        @media (max-width: 768px) {
-            header .title {
-                font-size: 24px;
-            }
 
             .card {
                 width: 220px;
