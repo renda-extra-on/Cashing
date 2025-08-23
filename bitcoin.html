@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTC Exploit | Método Exclusivo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+        
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background-color: #0a0a0a;
+            color: #00ff41;
+            overflow-x: hidden;
+        }
+        
+        .glitch {
+            position: relative;
+        }
+        
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff00ff;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #00ffff;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        
+        @keyframes glitch-anim {
+            0% { clip: rect(31px, 9999px, 94px, 0); }
+            10% { clip: rect(112px, 9999px, 76px, 0); }
+            20% { clip: rect(85px, 9999px, 77px, 0); }
+            30% { clip: rect(27px, 9999px, 97px, 0); }
+            40% { clip: rect(64px, 9999px, 98px, 0); }
+            50% { clip: rect(61px, 9999px, 85px, 0); }
+            60% { clip: rect(99px, 9999px, 114px, 0); }
+            70% { clip: rect(34px, 9999px, 115px, 0); }
+            80% { clip: rect(98px, 9999px, 129px, 0); }
+            90% { clip: rect(43px, 9999px, 96px, 0); }
+            100% { clip: rect(82px, 9999px, 64px, 0); }
+        }
+        
+        @keyframes glitch-anim2 {
+            0% { clip: rect(65px, 9999px, 119px, 0); }
+            10% { clip: rect(120px, 9999px, 83px, 0); }
+            20% { clip: rect(90px, 9999px, 22px, 0); }
+            30% { clip: rect(86px, 9999px, 4px, 0); }
+            40% { clip: rect(33px, 9999px, 148px, 0); }
+            50% { clip: rect(122px, 9999px, 144px, 0); }
+            60% { clip: rect(109px, 9999px, 115px, 0); }
+            70% { clip: rect(25px, 9999px, 6px, 0); }
+            80% { clip: rect(51px, 9999px, 147px, 0); }
+            90% { clip: rect(131px, 9999px, 74px, 0); }
+            100% { clip: rect(146px, 9999px, 110px, 0); }
+        }
+        
+        .terminal {
+            border: 1px solid #00ff41;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 10px #00ff41;
+        }
+        
+        .terminal-header {
+            background-color: #00ff41;
+            color: #000;
+            padding: 5px 10px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+        
+        .terminal-body {
+            padding: 15px;
+            height: 200px;
+            overflow-y: auto;
+        }
+        
+        .typing {
+            border-right: 2px solid #00ff41;
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: #00ff41; }
+        }
+        
+        .btn-hacker {
+            background: linear-gradient(45deg, #00ff41, #008f11);
+            color: black;
+            font-weight: bold;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-hacker:hover {
+            background: linear-gradient(45deg, #008f11, #00ff41);
+            box-shadow: 0 0 15px #00ff41;
+        }
+        
+        .card-hacker {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid #00ff41;
+            transition: all 0.3s;
+        }
+        
+        .card-hacker:hover {
+            box-shadow: 0 0 15px #00ff41;
+            transform: translateY(-5px);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 65, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 255, 65, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 65, 0); }
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-black py-4 border-b border-green-500">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-bitcoin text-green-500 text-3xl"></i>
+                <h1 class="text-2xl font-bold glitch" data-text="BTC EXPLOIT">BTC EXPLOIT</h1>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#metodo" class="hover:text-green-400 transition">Método</a>
+                <a href="#wallets" class="hover:text-green-400 transition">Wallets</a>
+                <a href="#contato" class="hover:text-green-400 transition">Contato</a>
+                <a href="#faq" class="hover:text-green-400 transition">FAQ</a>
+            </nav>
+            <button class="md:hidden text-green-500">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-20 bg-gradient-to-b from-black to-gray-900">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute inset-0 bg-green-500 mix-blend-overlay"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 glitch" data-text="EXPLOIT BITCOIN">EXPLOIT BITCOIN</h2>
+                    <p class="text-xl mb-8 text-green-300">Método exclusivo para multiplicar seus bitcoins de forma rápida e segura.</p>
+                    <div class="flex space-x-4">
+                        <a href="#metodo" class="btn-hacker px-6 py-3 rounded-lg">VER MÉTODO</a>
+                        <a href="#wallets" class="px-6 py-3 rounded-lg border border-green-500 text-green-500 hover:bg-green-900 hover:bg-opacity-30 transition">COMPRAR WALLET</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="terminal mx-auto max-w-md">
+                        <div class="terminal-header flex items-center">
+                            <div class="flex space-x-2 mr-3">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <span>root@btc-exploit:~</span>
+                        </div>
+                        <div class="terminal-body font-mono text-sm">
+                            <p class="text-green-400">$ sudo apt-get update</p>
+                            <p class="text-green-400">$ git clone https://github.com/btc-exploit/core.git</p>
+                            <p class="text-green-400">$ cd core</p>
+                            <p class="text-green-400">$ chmod +x exploit.sh</p>
+                            <p class="text-green-400">$ ./exploit.sh --wallet YOUR_WALLET_ADDRESS</p>
+                            <p class="text-green-400">$ Iniciando conexão com a rede botnet...</p>
+                            <p class="text-green-400">$ Conexão estabelecida com 1478 nós</p>
+                            <p class="text-green-400">$ Explorando vulnerabilidades na blockchain...</p>
+                            <p class="text-green-400">$ Vulnerabilidade encontrada!</p>
+                            <p class="text-green-400">$ Iniciando transferência para sua wallet...</p>
+                            <p class="text-green-400 mb-2">$ Transferência concluída: 0.042 BTC</p>
+                            <p class="text-green-500 font-bold typing">$ Aguardando próximo ciclo...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Método Section -->
+    <section id="metodo" class="py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-16 glitch" data-text="MÉTODO EXPLOIT BITCOIN">MÉTODO EXPLOIT BITCOIN</h2>
+            
+            <div class="max-w-4xl mx-auto bg-gray-900 p-8 rounded-lg border border-green-500 mb-12">
+                <h3 class="text-2xl font-bold mb-6 text-green-400">Recomendações Importantes:</h3>
+                <p class="mb-6">Recomendamos fortemente utilizar um celular extra para este método. Após cada uso, formate o dispositivo para garantir segurança e anonimato. O celular deve ter apenas uma carteira wallet instalada ou você pode criar uma nova especificamente para este propósito.</p>
+                
+                <div class="bg-gray-800 p-6 rounded-lg mb-8">
+                    <h4 class="text-xl font-bold mb-4 text-green-300">Pré-requisitos:</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Celular Android com acesso root (recomendado) ou com depuração USB ativada</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>No mínimo R$ 50,00 em sua carteira wallet antes de iniciar</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Conexão estável com a internet</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>2 aplicativos específicos instalados (listados abaixo)</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3 class="text-2xl font-bold mb-6 text-green-400">Passo a Passo:</h3>
+                <div class="space-y-8">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/3 mb-4 md:mb-0">
+                            <h4 class="text-xl font-bold text-green-300">1. Preparação do Dispositivo</h4>
+                        </div>
+                        <div class="md:w-2/3">
+                            <p>Formate completamente seu dispositivo Android ou utilize um celular limpo. Instale apenas os aplicativos necessários:</p>
+                            <ul class="mt-3 space-y-2">
+                                <li><span class="font-bold text-green-300">Termux:</span> Terminal avançado para executar nosso script</li>
+                                <li><span class="font-bold text-green-300">BotNet Connector:</span> Para conexão com a rede de dispositivos exploráveis</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/3 mb-4 md:mb-0">
+                            <h4 class="text-xl font-bold text-green-300">2. Configuração Inicial</h4>
+                        </div>
+                        <div class="md:w-2/3">
+                            <p>Abra o Termux e execute os seguintes comandos:</p>
+                            <div class="bg-gray-800 p-4 rounded-lg mt-3 font-mono text-sm">
+                                <p class="text-green-400">$ pkg update && pkg upgrade -y</p>
+                                <p class="text-green-400">$ pkg install git python -y</p>
+                                <p class="text-green-400">$ git clone https://github.com/btc-exploit/core.git</p>
+                                <p class="text-green-400">$ cd core</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/3 mb-4 md:mb-0">
+                            <h4 class="text-xl font-bold text-green-300">3. Conexão com a BotNet</h4>
+                        </div>
+                        <div class="md:w-2/3">
+                            <p>Abra o aplicativo BotNet Connector e aguarde a conexão com pelo menos 1000 dispositivos. Esta rede é essencial para o exploit funcionar, pois distribuímos a carga de processamento.</p>
+                            <p class="mt-3 text-yellow-300">Atenção: Não feche o aplicativo durante o processo.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/3 mb-4 md:mb-0">
+                            <h4 class="text-xl font-bold text-green-300">4. Execução do Exploit</h4>
+                        </div>
+                        <div class="md:w-2/3">
+                            <p>Volte ao Termux e execute o script principal:</p>
+                            <div class="bg-gray-800 p-4 rounded-lg mt-3 font-mono text-sm">
+                                <p class="text-green-400">$ chmod +x exploit.sh</p>
+                                <p class="text-green-400">$ ./exploit.sh --wallet SUA_CARTEIRA_AQUI</p>
+                            </div>
+                            <p class="mt-3">O processo pode levar de 15 a 45 minutos para ser concluído. Durante este tempo, o script irá:</p>
+                            <ul class="mt-2 space-y-1">
+                                <li><i class="fas fa-circle-notch text-green-500 mr-2"></i> Identificar transações vulneráveis na blockchain</li>
+                                <li><i class="fas fa-circle-notch text-green-500 mr-2"></i> Redirecionar frações de BTC para sua carteira</li>
+                                <li><i class="fas fa-circle-notch text-green-500 mr-2"></i> Ofuscar o rastreamento das transações</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/3 mb-4 md:mb-0">
+                            <h4 class="text-xl font-bold text-green-300">5. Finalização</h4>
+                        </div>
+                        <div class="md:w-2/3">
+                            <p>Após a conclusão, você receberá uma notificação no Termux com o valor creditado em sua carteira. Recomendamos:</p>
+                            <ul class="mt-3 space-y-2">
+                                <li><i class="fas fa-shield-alt text-green-500 mr-2"></i> Transferir imediatamente os fundos para uma carteira fria</li>
+                                <li><i class="fas fa-eraser text-green-500 mr-2"></i> Formatar o dispositivo antes do próximo uso</li>
+                                <li><i class="fas fa-sync-alt text-green-500 mr-2"></i> Aguardar pelo menos 24 horas antes de repetir o processo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 bg-green-900 bg-opacity-20 p-6 rounded-lg border border-green-500">
+                    <h4 class="text-xl font-bold mb-3 text-green-300">Importante!</h4>
+                    <p>Este método explora vulnerabilidades temporárias na blockchain do Bitcoin. O sucesso depende da sincronização perfeita com nossa rede botnet. Caso encontre dificuldades ou não tenha os aplicativos necessários, entre em contato conosco para obter suporte personalizado.</p>
+                    <p class="mt-3 font-bold">Nunca execute este método em seu dispositivo principal ou sem formatar após o uso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wallets Section -->
+    <section id="wallets" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-16 glitch" data-text="WALLETS PRONTAS">WALLETS PRONTAS</h2>
+            
+            <p class="text-center max-w-2xl mx-auto mb-12">Adquira uma wallet pré-configurada e com saldo inicial para começar imediatamente. Todas as wallets são verificadas e possuem histórico limpo.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Wallet 1 -->
+                <div class="card-hacker rounded-lg overflow-hidden pulse">
+                    <div class="bg-green-900 p-4">
+                        <h3 class="text-xl font-bold text-center">WALLET BASIC</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-center mb-6">
+                            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin Wallet" class="h-20">
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Saldo inicial: R$ 50,00</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Pré-configurada para o exploit</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Histórico limpo</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Aplicativos necessários incluídos</span>
+                            </li>
+                        </ul>
+                        <div class="text-center">
+                            <p class="text-3xl font-bold mb-4">R$ 150,00</p>
+                            <button class="btn-hacker px-6 py-3 rounded-lg w-full">COMPRAR AGORA</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Wallet 2 (Popular) -->
+                <div class="card-hacker rounded-lg overflow-hidden transform scale-105 pulse">
+                    <div class="bg-green-500 p-4 text-black">
+                        <h3 class="text-xl font-bold text-center">WALLET PRO</h3>
+                        <p class="text-center text-sm">MAIS POPULAR</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-center mb-6">
+                            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin Wallet" class="h-20">
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Saldo inicial: R$ 150,00</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Configuração premium para exploit</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Histórico limpo e verificado</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Aplicativos premium incluídos</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Suporte prioritário 24/7</span>
+                            </li>
+                        </ul>
+                        <div class="text-center">
+                            <p class="text-3xl font-bold mb-4">R$ 350,00</p>
+                            <button class="btn-hacker px-6 py-3 rounded-lg w-full">COMPRAR AGORA</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Wallet 3 -->
+                <div class="card-hacker rounded-lg overflow-hidden pulse">
+                    <div class="bg-green-900 p-4">
+                        <h3 class="text-xl font-bold text-center">WALLET VIP</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-center mb-6">
+                            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin Wallet" class="h-20">
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Saldo inicial: R$ 500,00</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Configuração VIP para exploit</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Histórico limpo e verificado</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Aplicativos VIP incluídos</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Suporte VIP 24/7</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Dispositivo pré-configurado opcional</span>
+                            </li>
+                        </ul>
+                        <div class="text-center">
+                            <p class="text-3xl font-bold mb-4">R$ 1.000,00</p>
+                            <button class="btn-hacker px-6 py-3 rounded-lg w-full">COMPRAR AGORA</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-black p-8 rounded-lg border border-green-500 max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold mb-6 text-center text-green-400">POR QUE COMPRAR UMA WALLET PRONTA?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="flex items-start">
+                        <div class="bg-green-500 text-black p-2 rounded-full mr-4">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2">Segurança Garantida</h4>
+                            <p>Nossas wallets passam por rigorosos processos de limpeza e são configuradas para máxima segurança e anonimato.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-green-500 text-black p-2 rounded-full mr-4">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2">Pronto para Uso</h4>
+                            <p>Economize tempo com a configuração. Tudo já está preparado para você começar a usar o método imediatamente.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-green-500 text-black p-2 rounded-full mr-4">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2">Proteção Anti-rastreamento</h4>
+                            <p>Implementamos técnicas avançadas para dificultar o rastreamento das transações.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-green-500 text-black p-2 rounded-full mr-4">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2">Suporte Especializado</h4>
+                            <p>Assistência personalizada para garantir que você aproveite ao máximo seu investimento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section id="contato" class="py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-16 glitch" data-text="CONTATO & SUPORTE">CONTATO & SUPORTE</h2>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-green-400">Entre em Contato</h3>
+                    <p class="mb-8">Precisa de ajuda com o método? Tem dúvidas sobre as wallets? Nossa equipe está disponível 24/7 para te ajudar.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="bg-green-500 text-black p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p class="text-green-300">suporte@btc-exploit.io</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-green-500 text-black p-3 rounded-full mr-4">
+                                <i class="fab fa-telegram"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Telegram</h4>
+                                <p class="text-green-300">@btc_exploit_suporte</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-green-500 text-black p-3 rounded-full mr-4">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">PGP Key</h4>
+                                <p class="text-sm text-gray-400">Disponível sob solicitação para comunicação segura</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="card-hacker p-8 rounded-lg h-full">
+                        <h3 class="text-2xl font-bold mb-6 text-green-400">Mensagem Direta</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label class="block mb-2">Seu Nome</label>
+                                <input type="text" class="w-full bg-gray-800 border border-green-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Seu Contato (Email ou Telegram)</label>
+                                <input type="text" class="w-full bg-gray-800 border border-green-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Assunto</label>
+                                <select class="w-full bg-gray-800 border border-green-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <option>Dúvida sobre o método</option>
+                                    <option>Problemas com wallet</option>
+                                    <option>Suporte técnico</option>
+                                    <option>Outro</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label class="block mb-2">Mensagem</label>
+                                <textarea rows="4" class="w-full bg-gray-800 border border-green-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                            </div>
+                            <button type="submit" class="btn-hacker px-6 py-3 rounded-lg w-full">ENVIAR MENSAGEM</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-16 glitch" data-text="PERGUNTAS FREQUENTES">PERGUNTAS FREQUENTES</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="card-hacker rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full text-left p-6 flex justify-between items-center">
+                        <h3 class="text-lg font-bold">O método é seguro e anônimo?</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p>Sim, desde que todas as recomendações sejam seguidas à risca. Utilizamos técnicas avançadas de ofuscação e a rede botnet distribuída garante que nenhum IP ou dispositivo possa ser rastreado diretamente até você. A recomendação de usar um dispositivo separado e formatá-lo após o uso é crucial para manter o anonimato.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="card-hacker rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full text-left p-6 flex justify-between items-center">
+                        <h3 class="text-lg font-bold">Por que preciso depositar R$ 50,00 antes de começar?</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p>O valor inicial serve como "isca" para o algoritmo da blockchain. Transações muito pequenas ou wallets vazias são frequentemente ignoradas pelos sistemas de segurança. Os R$ 50,00 garantem que sua wallet seja tratada como legítima pelo sistema, permitindo que o exploit funcione corretamente.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="card-hacker rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full text-left p-6 flex justify-between items-center">
+                        <h3 class="text-lg font-bold">Quanto posso ganhar com esse método?</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p>Os resultados variam conforme a disponibilidade de vulnerabilidades na rede. Em média, nossos usuários reportam ganhos entre R$ 300,00 e R$ 2.500,00 por execução bem-sucedida. O método pode ser repetido, mas recomendamos intervalos de pelo menos 24 horas entre cada execução e sempre utilizar um dispositivo limpo.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="card-hacker rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full text-left p-6 flex justify-between items-center">
+                        <h3 class="text-lg font-bold">Posso usar o mesmo celular várias vezes?</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p>Sim, mas apenas se você formatar completamente o dispositivo após cada uso. Recomendamos fortemente o uso de um celular dedicado apenas para este propósito. Dispositivos usados repetidamente sem formatação adequada podem acumular dados que comprometem a segurança e o anonimato.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="card-hacker rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full text-left p-6 flex justify-between items-center">
+                        <h3 class="text-lg font-bold">Como obtenho os aplicativos necessários?</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p>Os aplicativos Termux e BotNet Connector são fornecidos por nós após a compra de qualquer wallet. Eles são versões modificadas especificamente para nosso método e não estão disponíveis em lojas de aplicativos convencionais. Caso tenha problemas para instalá-los, nosso suporte pode guiá-lo passo a passo.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div class="card-hacker rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full text-left p-6 flex justify-between items-center">
+                        <h3 class="text-lg font-bold">Quanto tempo leva para ver os resultados?</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p>O processo completo geralmente leva entre 30 minutos e 2 horas, dependendo da velocidade da sua conexão e do número de dispositivos disponíveis na rede botnet. Você verá o saldo em sua wallet assim que o exploit for concluído com sucesso. Em casos raros, pode levar até 12 horas para a confirmação na blockchain.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-green-900">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-bitcoin text-green-500 text-2xl"></i>
+                        <h2 class="text-xl font-bold">BTC EXPLOIT</h2>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-500">Tecnologia avançada em exploração blockchain</p>
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#" class="text-gray-400 hover:text-green-500 transition">
+                        <i class="fab fa-telegram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-green-500 transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-green-500 transition">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-sm text-gray-500">© 2023 BTC Exploit. Todos os direitos reservados.</p>
+                    <p class="text-xs mt-1 text-gray-600">Este site é apenas para fins educacionais.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('transform');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // Terminal typing animation
+        const terminalTexts = [
+            "$ Transferência concluída: 0.057 BTC",
+            "$ Transferência concluída: 0.032 BTC",
+            "$ Transferência concluída: 0.041 BTC"
+        ];
+        
+        let currentText = 0;
+        const terminalLine = document.querySelector('.typing');
+        
+        function changeTerminalText() {
+            terminalLine.classList.remove('typing');
+            setTimeout(() => {
+                terminalLine.textContent = terminalTexts[currentText];
+                currentText = (currentText + 1) % terminalTexts.length;
+                setTimeout(() => {
+                    terminalLine.textContent = "$ Aguardando próximo ciclo...";
+                    terminalLine.classList.add('typing');
+                }, 2000);
+            }, 1000);
+        }
+        
+        setInterval(changeTerminalText, 8000);
+        
+        // Mobile menu toggle (placeholder)
+        document.querySelector('.md\\:hidden').addEventListener('click', () => {
+            alert('Menu mobile será implementado aqui');
+        });
+    </script>
+</body>
+</html>
