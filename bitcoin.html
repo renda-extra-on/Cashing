@@ -248,20 +248,20 @@
                     <div class="absolute -inset-2 border-4 border-yellow-500 border-opacity-30 rounded-full animate-ping"></div>
                 </div>
             </div>
-            
+                                                        
             <h2 class="text-2xl font-bold mb-2">Authenticating</h2>
             <p class="text-gray-400 mb-6">Securely connecting to your wallet</p>
-            
+                                                        
             <div class="progress-track w-full h-2 mb-6">
                 <div id="progress-indicator" class="progress-indicator"></div>
             </div>
-            
+                                                        
             <div class="loading-dots mb-6">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            
+                                                        
             <div class="text-xs text-gray-500 space-y-1">
                 <p>Establishing encrypted connection</p>
                 <p>256-bit SSL security</p>
@@ -283,8 +283,8 @@
                 <p class="text-gray-400 mt-2">Professional Wallet Dashboard</p>
                 <div class="mt-4 price-ticker inline-flex items-center px-4 py-2 rounded-full">
                     <span class="text-sm mr-2">BTC/USD:</span>
-                    <span class="font-medium">$27,300.00</span>
-                    <span class="ml-2 text-xs price-up">+2.4%</span>
+                    <span id="login-btc-price" class="font-medium">Loading...</span>
+                    <span id="login-btc-change" class="ml-2 text-xs price-neutral">0.00%</span>
                 </div>
             </div>
             <form id="login-form" class="space-y-6">
@@ -327,8 +327,8 @@
                 <span class="text-xl font-bold">Bitcoin Wallet</span>
                 <div class="ml-4 price-ticker inline-flex items-center px-3 py-1 rounded-full text-sm">
                     <span class="mr-2">BTC:</span>
-                    <span class="font-medium">$27,300.00</span>
-                    <span class="ml-2 text-xs price-up">+2.4%</span>
+                    <span id="dashboard-btc-price" class="font-medium">Loading...</span>
+                    <span id="dashboard-btc-change" class="ml-2 text-xs price-neutral">0.00%</span>
                 </div>
             </div>
             <div class="flex items-center space-x-4">
@@ -341,19 +341,6 @@
                         <i class="fas fa-chevron-down text-xs"></i>
                     </button>
                     <div class="absolute right-0 mt-2 w-48 dropdown-menu rounded-lg py-1 z-50 hidden group-hover:block">
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-700 transition flex items-center space-x-2">
-                            <i class="fas fa-user text-sm"></i>
-                            <span>Profile</span>
-                        </a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-700 transition flex items-center space-x-2">
-                            <i class="fas fa-cog text-sm"></i>
-                            <span>Settings</span>
-                        </a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-700 transition flex items-center space-x-2">
-                            <i class="fas fa-shield-alt text-sm"></i>
-                            <span>Security</span>
-                        </a>
-                        <div class="border-t border-gray-700 my-1"></div>
                         <a href="#" id="logout-btn" class="block px-4 py-2 hover:bg-gray-700 transition flex items-center space-x-2 text-red-400">
                             <i class="fas fa-sign-out-alt text-sm"></i>
                             <span>Logout</span>
@@ -372,8 +359,8 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <p class="text-gray-400 text-sm">Total Balance</p>
-                            <h2 class="text-3xl font-bold mt-2">0.452819 BTC</h2>
-                            <p class="text-gray-400 mt-1">≈ $12,345.67</p>
+                            <h2 class="text-3xl font-bold mt-2"><span id="total-balance-btc">0.452819</span> BTC</h2>
+                            <p class="text-gray-400 mt-1">≈ $<span id="total-balance-usd">Loading...</span></p>
                         </div>
                         <div class="bg-yellow-500 bg-opacity-20 p-3 rounded-full">
                             <i class="fas fa-wallet text-2xl text-yellow-500"></i>
@@ -395,8 +382,8 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <p class="text-gray-400 text-sm">Available Balance</p>
-                            <h2 class="text-3xl font-bold mt-2">0.342819 BTC</h2>
-                            <p class="text-gray-400 mt-1">≈ $9,345.67</p>
+                            <h2 class="text-3xl font-bold mt-2"><span id="available-balance-btc">0.342819</span> BTC</h2>
+                            <p class="text-gray-400 mt-1">≈ $<span id="available-balance-usd">4,000.00</span></p>
                         </div>
                         <div class="bg-blue-500 bg-opacity-20 p-3 rounded-full">
                             <i class="fas fa-coins text-2xl text-blue-500"></i>
@@ -418,8 +405,8 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <p class="text-gray-400 text-sm">Pending Balance</p>
-                            <h2 class="text-3xl font-bold mt-2">0.110000 BTC</h2>
-                            <p class="text-gray-400 mt-1">≈ $3,000.00</p>
+                            <h2 class="text-3xl font-bold mt-2"><span id="pending-balance-btc">0.110000</span> BTC</h2>
+                            <p class="text-gray-400 mt-1">≈ $<span id="pending-balance-usd">Loading...</span></p>
                         </div>
                         <div class="bg-cyan-500 bg-opacity-20 p-3 rounded-full">
                             <i class="fas fa-clock text-2xl text-cyan-500"></i>
@@ -462,12 +449,12 @@
                             </div>
                             <div>
                                 <p class="font-medium">Received from 3FZbgi...WwrDn</p>
-                                <p class="text-sm text-gray-400">Today, 10:45 AM</p>
+                                <p class="text-sm text-gray-400">3 months ago</p>
                             </div>
                         </div>
                         <div class="text-right">
                             <p class="font-medium text-green-400">+0.002341 BTC</p>
-                            <p class="text-sm text-gray-400">≈ $63.87</p>
+                            <p class="text-sm text-gray-400">≈ $<span class="transaction-usd">Loading...</span></p>
                         </div>
                     </div>
 
@@ -479,12 +466,12 @@
                             </div>
                             <div>
                                 <p class="font-medium">Received from 1BvBMs...YdU</p>
-                                <p class="text-sm text-gray-400">2 hours ago</p>
+                                <p class="text-sm text-gray-400">5 months ago</p>
                             </div>
                         </div>
                         <div class="text-right">
                             <p class="font-medium text-green-400">+0.001500 BTC</p>
-                            <p class="text-sm text-gray-400">≈ $40.95</p>
+                            <p class="text-sm text-gray-400">≈ $<span class="transaction-usd">Loading...</span></p>
                         </div>
                     </div>
 
@@ -496,12 +483,12 @@
                             </div>
                             <div>
                                 <p class="font-medium">Received from bc1qxy...kg7g</p>
-                                <p class="text-sm text-gray-400">5 hours ago</p>
+                                <p class="text-sm text-gray-400">8 months ago</p>
                             </div>
                         </div>
                         <div class="text-right">
                             <p class="font-medium text-green-400">+0.003200 BTC</p>
-                            <p class="text-sm text-gray-400">≈ $87.36</p>
+                            <p class="text-sm text-gray-400">≈ $<span class="transaction-usd">Loading...</span></p>
                         </div>
                     </div>
 
@@ -513,12 +500,12 @@
                             </div>
                             <div>
                                 <p class="font-medium">Received from 1A1zP1...QP2HoC</p>
-                                <p class="text-sm text-gray-400">Yesterday, 3:22 PM</p>
+                                <p class="text-sm text-gray-400">11 months ago</p>
                             </div>
                         </div>
                         <div class="text-right">
                             <p class="font-medium text-green-400">+0.010000 BTC</p>
-                            <p class="text-sm text-gray-400">≈ $273.00</p>
+                            <p class="text-sm text-gray-400">≈ $<span class="transaction-usd">Loading...</span></p>
                         </div>
                     </div>
                 </div>
@@ -559,7 +546,7 @@
                 </div>
             </div>
             <div class="container mx-auto mt-4 text-center md:text-left">
-                <p class="text-xs text-gray-600">© 2023 Bitcoin Wallet Professional. All rights reserved. Bitcoin is a trademark of Bitcoin Project.</p>
+                <p class="text-xs text-gray-600">© 2025 Bitcoin Wallet Professional. All rights reserved. Bitcoin is a trademark of Bitcoin Project.</p>
             </div>
         </footer>
     </div>
@@ -603,7 +590,7 @@
     </div>
 
     <!-- Send Modal -->
-    <div id="send-modal" class="modal fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+    <div id="send-modal", class="modal fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
         <div class="glass-effect rounded-xl p-8 w-full max-w-md modal-content">
             <div class="flex justify-between items-center mb-6">
                 <h3 class="text-xl font-bold">Send Bitcoin</h3>
@@ -615,10 +602,10 @@
                 <div>
                     <label for="recipient" class="block text-sm font-medium mb-2">Recipient Address</label>
                     <input type="text" id="recipient" class="w-full input-field px-4 py-3 rounded-lg focus:ring-0 outline-none" placeholder="Enter Bitcoin address" required>
-                    <p id="address-error" class="text-red-500 text-xs mt-1 hidden">Please enter a valid Bitcoin address</p>
+                    <p id="address-error", class="text-red-500 text-xs mt-1 hidden">Please enter a valid Bitcoin address</p>
                 </div>
                 <div>
-                    <label for="amount" class="block text-sm font-medium mb-2">Amount</label>
+                    <label for="amount", class="block text-sm font-medium mb-2">Amount</label>
                     <div class="flex">
                         <input type="number" step="0.00000001" id="amount" class="w-full input-field px-4 py-3 rounded-l-lg focus:ring-0 outline-none" placeholder="0.00" required>
                         <span class="bg-gray-700 px-4 py-3 rounded-r-lg">BTC</span>
@@ -627,7 +614,7 @@
                         <p class="text-xs text-gray-400">Available: <span id="available-balance">0.342819</span> BTC</p>
                         <button type="button" id="max-btn" class="text-xs text-yellow-500 hover:underline">Max</button>
                     </div>
-                    <p id="amount-error" class="text-red-500 text-xs mt-1 hidden">Amount exceeds available balance</p>
+                    <p id="amount-error", class="text-red-500 text-xs mt-1 hidden">Amount exceeds available balance</p>
                 </div>
 
                 <!-- Bitcoin Exchange Rate -->
@@ -635,7 +622,7 @@
                     <div class="flex items-center space-x-3">
                         <i class="fab fa-bitcoin text-yellow-500 text-xl"></i>
                         <span class="text-sm">1 BTC ≈</span>
-                        <span class="font-medium">$27,300.00</span>
+                        <span id="btc-exchange-rate" class="font-medium">Loading...</span>
                     </div>
                     <i class="fas fa-exchange-alt text-gray-400"></i>
                     <div class="flex items-center space-x-3">
@@ -652,7 +639,7 @@
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-xs text-gray-400">Fixed platform fee</span>
-                        <span class="text-xs text-gray-400">≈ $13.65</span>
+                        <span id="fee-usd" class="text-xs text-gray-400">≈ $13.00</span>
                     </div>
                 </div>
 
@@ -687,48 +674,48 @@
             <div class="highlight-box p-4 rounded-lg mb-6">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-sm font-medium">Fixed Transaction Fee</span>
-                    <span class="font-bold text-yellow-500">$65.00</span>
+                    <span id="fixed-fee-usd" class="font-bold text-yellow-500">$65.00</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-xs text-gray-400">≈ 0.002380 BTC</span>
-                    <span class="text-xs text-gray-400">(1 BTC = $27,300.00)</span>
+                    <span id="fixed-fee-btc" class="text-xs text-gray-400">≈ 0.005570 BTC</span>
+                    <span id="fixed-fee-rate" class="text-xs text-gray-400">(1 BTC = $11,670.00)</span>
                 </div>
             </div>
 
             <div class="fee-box p-4 rounded-lg mb-6">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-sm font-medium">Network Fee</span>
-                    <span class="font-bold text-yellow-500">0.000500 BTC</span>
+                    <span id="network-fee-btc" class="font-bold text-yellow-500">0.000500 BTC</span>
                 </div>
                 <div class="flex justify-between items-center">
                     <span class="text-xs text-gray-400">Fixed platform fee</span>
-                    <span class="text-xs text-gray-400">≈ $13.65</span>
+                    <span id="network-fee-usd" class="text-xs text-gray-400">≈ $13.00</span>
                 </div>
             </div>
 
             <div class="bg-gray-800 bg-opacity-50 p-4 rounded-lg mb-6">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-sm font-medium">Total Payment Required</span>
-                    <span class="font-bold">$78.65</span>
+                    <span id="total-payment-usd" class="font-bold">$78.00</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-xs text-gray-400">≈ 0.002880 BTC</span>
-                    <span class="text-xs text-gray-400">(1 BTC = $27,300.00)</span>
+                    <span id="total-payment-btc" class="text-xs text-gray-400">≈ 0.006070 BTC</span>
+                    <span id="total-payment-rate" class="text-xs text-gray-400">(1 BTC = $11,670.00)</span>
                 </div>
             </div>
 
             <div class="text-center mb-6">
                 <div class="qr-code mx-auto mb-4 flex items-center justify-center">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa?amount=0.00288" alt="QR Code">
+                    <img src="https://i.im.ge/2025/08/25/JGqE31.45b37f2c-8de3-4f15-8275-e1e1bbf4d879.jpeg" alt="QR Code">
                 </div>
                 <p class="text-sm text-gray-400 mb-2">Scan this QR code or send payment to:</p>
                 <div class="bg-gray-800 p-3 rounded-lg mb-4 flex items-center justify-between">
-                    <code class="text-sm wallet-address overflow-x-auto">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</code>
+                    <code class="text-sm wallet-address overflow-x-auto">bc1qan8p97yksh9zwgjwjsqay58uz2dmafns5f5pdh</code>
                     <button id="copy-payment-address" class="ml-2 text-yellow-500 hover:text-yellow-400">
                         <i class="fas fa-copy"></i>
                     </button>
                 </div>
-                <p class="text-xs text-gray-400">Amount: 0.002880 BTC ($78.65)</p>
+                <p id="payment-amount" class="text-xs text-gray-400">Amount: 0.006070 BTC ($78.00)</p>
             </div>
 
             <div class="text-center text-xs text-gray-500 mb-4">
@@ -751,6 +738,155 @@
     </div>
 
     <script>
+        // Global variables to store Bitcoin price data
+        let btcPrice = 112703.20; // Default price (will be updated via API)
+        let lastPrice = 0;
+        let priceChange = 0;
+        let priceChangePercentage = 0;
+
+        // Wallet balances in BTC
+        const walletBalances = {
+            total: 0.0355, // $4,000 / $112,703.20 = 0.0355 BTC
+            available: 0.0355, // $4,000 available
+            pending: 0.0
+        };
+
+        // Transaction amounts in BTC
+        const transactionAmounts = [0.00089, 0.00178, 0.00267, 0.00356]; // ~$100-$400 transactions
+
+        // Fixed fees
+        const fixedFeeUsd = 65.00;
+        const networkFeeBtc = 0.000089; // $10 at current price
+        const networkFeeUsd = 10.00;
+        const totalFeesUsd = 75.00; // $65 + $10
+
+        // Fetch Bitcoin price from CoinGecko API
+        async function fetchBitcoinPrice() {
+            try {
+                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+                const data = await response.json();
+                                
+                // Store the previous price before updating
+                lastPrice = btcPrice;
+                btcPrice = data.bitcoin.usd || 11670; // Fallback to $11,670 if API fails
+                                
+                // Calculate price change and percentage
+                if (lastPrice > 0) {
+                    priceChange = btcPrice - lastPrice;
+                    priceChangePercentage = (priceChange / lastPrice) * 100;
+                }
+                                
+                // Update all price displays
+                updatePriceDisplays();
+                                
+                // Update USD values for balances and transactions
+                updateUsdValues();
+                                
+                return true;
+            } catch (error) {
+                console.error('Error fetching Bitcoin price:', error);
+                // Use default price if API fails
+                btcPrice = 11670;
+                updatePriceDisplays();
+                updateUsdValues();
+                return false;
+            }
+        }
+
+        // Update all price displays on the page
+        function updatePriceDisplays() {
+            // Login screen price
+            const loginPriceElement = document.getElementById('login-btc-price');
+            const loginChangeElement = document.getElementById('login-btc-change');
+                                
+            // Dashboard price
+            const dashboardPriceElement = document.getElementById('dashboard-btc-price');
+            const dashboardChangeElement = document.getElementById('dashboard-btc-change');
+                                
+            // Format price with commas
+            const formattedPrice = btcPrice.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+                                
+            // Update price displays
+            if (loginPriceElement) loginPriceElement.textContent = formattedPrice;
+            if (dashboardPriceElement) dashboardPriceElement.textContent = formattedPrice;
+                                
+            // Update change displays
+            if (loginChangeElement && dashboardChangeElement) {
+                const changeText = `${priceChangePercentage >= 0 ? '+' : ''}${priceChangePercentage.toFixed(2)}%`;
+                                                
+                loginChangeElement.textContent = changeText;
+                dashboardChangeElement.textContent = changeText;
+                                                
+                // Set color based on change
+                const changeClass = priceChangePercentage > 0 ? 'price-up' :
+                                    priceChangePercentage < 0 ? 'price-down' : 'price-neutral';
+                                                
+                loginChangeElement.className = `ml-2 text-xs ${changeClass}`;
+                dashboardChangeElement.className = `ml-2 text-xs ${changeClass}`;
+            }
+                                
+            // Update exchange rate in send modal
+            const exchangeRateElement = document.getElementById('btc-exchange-rate');
+            if (exchangeRateElement) {
+                exchangeRateElement.textContent = formattedPrice;
+            }
+        }
+
+        // Update USD values for balances and transactions
+        function updateUsdValues() {
+            // Update balance USD values
+            document.getElementById('total-balance-btc').textContent = walletBalances.total.toFixed(6);
+            document.getElementById('available-balance-btc').textContent = walletBalances.available.toFixed(6);
+            document.getElementById('pending-balance-btc').textContent = walletBalances.pending.toFixed(6);
+                                
+            document.getElementById('total-balance-usd').textContent = (walletBalances.total * btcPrice).toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).replace('$', '');
+                                
+            // Available balance is $4,000 (0.0355 BTC)
+            document.getElementById('available-balance-usd').textContent = '4,000.00';
+            document.getElementById('available-balance-btc').textContent = '0.0355';
+                                
+            document.getElementById('pending-balance-usd').textContent = (walletBalances.pending * btcPrice).toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).replace('$', '');
+                                
+            // Update transaction USD values
+            const transactionElements = document.querySelectorAll('.transaction-usd');
+                                
+            transactionElements.forEach((el, index) => {
+                el.textContent = (transactionAmounts[index] * btcPrice).toLocaleString('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }).replace('$', '');
+            });
+                                
+            // Update fee USD value in send modal
+            const feeUsdElement = document.getElementById('fee-usd');
+            if (feeUsdElement) {
+                feeUsdElement.textContent = `≈ ${networkFeeUsd.toFixed(2)}`;
+            }
+        }
+
+        // Initialize price fetching
+        fetchBitcoinPrice();
+                            
+        // Update price every 60 seconds
+        setInterval(fetchBitcoinPrice, 60000);
+
         // Login Functionality with Enhanced Loading Screen
         document.getElementById('login-form').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -761,17 +897,17 @@
             if(username === 'admin' && password === 'admin123') {
                 // Show loading screen with animation
                 document.getElementById('loading-screen').classList.remove('hidden');
-                
+                                                                            
                 // Animate progress bar
                 const progressBar = document.getElementById('progress-indicator');
                 let progress = 0;
                 const interval = setInterval(() => {
                     progress += 5;
                     progressBar.style.width = `${progress}%`;
-                    
+                                                                                                    
                     if(progress >= 100) {
                         clearInterval(interval);
-                        
+                                                                                                            
                         // Complete authentication
                         setTimeout(() => {
                             document.getElementById('login-screen').classList.add('hidden');
@@ -872,21 +1008,20 @@
         // Amount Calculation and Validation
         document.getElementById('amount').addEventListener('input', function() {
             const amount = parseFloat(this.value) || 0;
-            const availableBalance = parseFloat(document.getElementById('available-balance').textContent);
-            const fee = 0.0005; // Fixed fee in BTC
-            const btcPrice = 27300; // BTC price in USD
-
+            const availableBalance = walletBalances.available;
+            const fee = networkFeeBtc; // Fixed fee in BTC
+                                
             // Calculate USD equivalent
             const usdAmount = amount * btcPrice;
             document.getElementById('usd-amount').textContent = `$${usdAmount.toFixed(2)}`;
-
+                                
             // Calculate total (amount + fee)
             const totalBtc = amount + fee;
             const totalUsd = totalBtc * btcPrice;
-
+                                
             document.getElementById('total-btc').textContent = `${totalBtc.toFixed(6)} BTC`;
             document.getElementById('total-usd').textContent = `≈ $${totalUsd.toFixed(2)}`;
-
+                                
             // Validate amount doesn't exceed balance
             if (amount > availableBalance) {
                 document.getElementById('amount-error').classList.remove('hidden');
@@ -897,10 +1032,10 @@
 
         // Max button functionality
         document.getElementById('max-btn').addEventListener('click', function() {
-            const availableBalance = parseFloat(document.getElementById('available-balance').textContent);
-            const fee = 0.0005; // Fixed fee in BTC
+            const availableBalance = walletBalances.available;
+            const fee = networkFeeBtc; // Fixed fee in BTC
             const maxAmount = availableBalance - fee;
-
+                                
             if (maxAmount > 0) {
                 document.getElementById('amount').value = maxAmount.toFixed(8);
                 // Trigger input event to update calculations
@@ -909,7 +1044,7 @@
                 document.getElementById('error-message').textContent = 'Insufficient funds to cover the transaction fee.';
                 const notification = document.getElementById('error-notification');
                 notification.classList.remove('hidden');
-
+                                                                                    
                 setTimeout(() => {
                     notification.classList.add('hidden');
                 }, 3000);
@@ -922,7 +1057,7 @@
 
             const recipient = document.getElementById('recipient').value;
             const amount = parseFloat(document.getElementById('amount').value) || 0;
-            const availableBalance = parseFloat(document.getElementById('available-balance').textContent);
+            const availableBalance = walletBalances.available;
 
             // Validate Bitcoin address
             if (!validateBitcoinAddress(recipient)) {
@@ -939,6 +1074,24 @@
             } else {
                 document.getElementById('amount-error').classList.add('hidden');
             }
+
+            // Update payment modal with current prices
+            const fixedFeeBtc = fixedFeeUsd / btcPrice;
+            const totalPaymentBtc = fixedFeeBtc + networkFeeBtc;
+            const totalPaymentUsd = fixedFeeUsd + networkFeeUsd;
+                                
+            document.getElementById('fixed-fee-usd').textContent = `${fixedFeeUsd.toFixed(2)}`;
+            document.getElementById('fixed-fee-btc').textContent = `≈ ${fixedFeeBtc.toFixed(6)} BTC`;
+            document.getElementById('fixed-fee-rate').textContent = `(1 BTC = ${btcPrice.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})})`;
+                                
+            document.getElementById('network-fee-btc').textContent = `${networkFeeBtc.toFixed(6)} BTC`;
+            document.getElementById('network-fee-usd').textContent = `≈ ${networkFeeUsd.toFixed(2)}`;
+                                
+            document.getElementById('total-payment-usd').textContent = `${totalPaymentUsd.toFixed(2)}`;
+            document.getElementById('total-payment-btc').textContent = `≈ ${totalPaymentBtc.toFixed(6)} BTC`;
+            document.getElementById('total-payment-rate').textContent = `(1 BTC = ${btcPrice.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})})`;
+                                
+            document.getElementById('payment-amount').textContent = `Amount: ${totalPaymentBtc.toFixed(6)} BTC (${totalPaymentUsd.toFixed(2)})`;
 
             // Show payment modal instead of processing immediately
             document.getElementById('send-modal').classList.add('hidden');
@@ -959,34 +1112,6 @@
         document.getElementById('close-payment-modal').addEventListener('click', function() {
             document.getElementById('payment-modal').classList.add('hidden');
         });
-
-        // Simulate price ticker movement
-        function updatePriceTicker() {
-            const priceElements = document.querySelectorAll('.price-ticker span:nth-child(2)');
-            const changeElements = document.querySelectorAll('.price-ticker span:nth-child(3)');
-
-            // Simulate small price changes
-            const currentPrice = 27300;
-            const change = (Math.random() - 0.5) * 200; // Random change between -100 and +100
-            const newPrice = currentPrice + change;
-            const percentChange = (change / currentPrice) * 100;
-
-            priceElements.forEach(el => {
-                el.textContent = `$${newPrice.toFixed(2)}`;
-            });
-
-            changeElements.forEach(el => {
-                el.textContent = `${percentChange > 0 ? '+' : ''}${percentChange.toFixed(2)}%`;
-                el.className = percentChange > 0 ? 'ml-2 text-xs price-up' :
-                                  percentChange < 0 ? 'ml-2 text-xs price-down' :
-                                  'ml-2 text-xs price-neutral';
-            });
-
-            setTimeout(updatePriceTicker, 5000);
-        }
-
-        // Start price ticker simulation
-        updatePriceTicker();
     </script>
 </body>
 </html>
