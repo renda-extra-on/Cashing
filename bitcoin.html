@@ -1,722 +1,992 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BTC Exploit | Método Exclusivo</title>
+    <title>Bitcoin Wallet Dashboard | Professional Wallet</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-        
         body {
-            font-family: 'Share Tech Mono', monospace;
-            background-color: #0a0a0a;
-            color: #00ff41;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
         }
-        
-        .glitch {
-            position: relative;
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
-        
-        .glitch::before, .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .card-gradient {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
-        .glitch::before {
-            left: 2px;
-            text-shadow: -2px 0 #ff00ff;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim 5s infinite linear alternate-reverse;
+        .card-gradient-2 {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
-        .glitch::after {
-            left: -2px;
-            text-shadow: -2px 0 #00ffff;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        .card-gradient-3 {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
-        @keyframes glitch-anim {
-            0% { clip: rect(31px, 9999px, 94px, 0); }
-            10% { clip: rect(112px, 9999px, 76px, 0); }
-            20% { clip: rect(85px, 9999px, 77px, 0); }
-            30% { clip: rect(27px, 9999px, 97px, 0); }
-            40% { clip: rect(64px, 9999px, 98px, 0); }
-            50% { clip: rect(61px, 9999px, 85px, 0); }
-            60% { clip: rect(99px, 9999px, 114px, 0); }
-            70% { clip: rect(34px, 9999px, 115px, 0); }
-            80% { clip: rect(98px, 9999px, 129px, 0); }
-            90% { clip: rect(43px, 9999px, 96px, 0); }
-            100% { clip: rect(82px, 9999px, 64px, 0); }
+        .btn-primary {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            box-shadow: 0 4px 6px rgba(245, 158, 11, 0.2);
         }
-        
-        @keyframes glitch-anim2 {
-            0% { clip: rect(65px, 9999px, 119px, 0); }
-            10% { clip: rect(120px, 9999px, 83px, 0); }
-            20% { clip: rect(90px, 9999px, 22px, 0); }
-            30% { clip: rect(86px, 9999px, 4px, 0); }
-            40% { clip: rect(33px, 9999px, 148px, 0); }
-            50% { clip: rect(122px, 9999px, 144px, 0); }
-            60% { clip: rect(109px, 9999px, 115px, 0); }
-            70% { clip: rect(25px, 9999px, 6px, 0); }
-            80% { clip: rect(51px, 9999px, 147px, 0); }
-            90% { clip: rect(131px, 9999px, 74px, 0); }
-            100% { clip: rect(146px, 9999px, 110px, 0); }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%);
+            box-shadow: 0 6px 8px rgba(245, 158, 11, 0.3);
         }
-        
-        .terminal {
-            border: 1px solid #00ff41;
-            border-radius: 5px;
-            background-color: rgba(0, 0, 0, 0.7);
-            box-shadow: 0 0 10px #00ff41;
+        .btn-secondary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
         }
-        
-        .terminal-header {
-            background-color: #00ff41;
-            color: #000;
-            padding: 5px 10px;
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+            box-shadow: 0 6px 8px rgba(59, 130, 246, 0.3);
         }
-        
-        .terminal-body {
-            padding: 15px;
-            height: 200px;
-            overflow-y: auto;
+        .transaction-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
         }
-        
-        .typing {
-            border-right: 2px solid #00ff41;
-            animation: blink 1s step-end infinite;
+        .modal {
+            transition: opacity 0.3s ease;
         }
-        
-        @keyframes blink {
-            from, to { border-color: transparent; }
-            50% { border-color: #00ff41; }
+        .qr-code {
+            width: 180px;
+            height: 180px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
-        .btn-hacker {
-            background: linear-gradient(45deg, #00ff41, #008f11);
-            color: black;
-            font-weight: bold;
-            border: none;
-            transition: all 0.3s;
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #f59e0b;
+            animation: spin 1s ease-in-out infinite;
         }
-        
-        .btn-hacker:hover {
-            background: linear-gradient(45deg, #008f11, #00ff41);
-            box-shadow: 0 0 15px #00ff41;
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
-        
-        .card-hacker {
-            background-color: rgba(0, 0, 0, 0.7);
-            border: 1px solid #00ff41;
-            transition: all 0.3s;
-        }
-        
-        .card-hacker:hover {
-            box-shadow: 0 0 15px #00ff41;
-            transform: translateY(-5px);
-        }
-        
-        .pulse {
+        .bitcoin-icon {
             animation: pulse 2s infinite;
         }
-        
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 255, 65, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(0, 255, 65, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 255, 65, 0); }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
-        
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
+        .fee-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%);
+            border: 1px solid rgba(245, 158, 11, 0.3);
         }
-        
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        .payment-modal {
+            animation: slideIn 0.3s ease-out forwards;
+            max-height: 95vh;
+            overflow-y: auto;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .progress-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b 0%, #f97316 100%);
+            animation: progress 2s ease-in-out infinite;
+            background-size: 200% 100%;
+        }
+        @keyframes progress {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(249, 115, 22, 0.15) 100%);
+            border-left: 4px solid #f59e0b;
+        }
+        .glass-effect {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .dashboard-header {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .dashboard-footer {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .input-field {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .input-field:focus {
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+        }
+        .dropdown-menu {
+            background: rgba(30, 41, 59, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+        .success-notification {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 10px 15px rgba(16, 185, 129, 0.2);
+        }
+        .error-notification {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            box-shadow: 0 10px 15px rgba(239, 68, 68, 0.2);
+        }
+        .wallet-address {
+            font-family: 'Courier New', monospace;
+        }
+        .tooltip {
+            position: relative;
+        }
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .tooltip-text {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(30, 41, 59, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .price-ticker {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .price-up {
+            color: #10b981;
+        }
+        .price-down {
+            color: #ef4444;
+        }
+        .price-neutral {
+            color: #94a3b8;
+        }
+        .modal-content {
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        /* New loading animation styles */
+        .loading-dots {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .loading-dots span {
+            width: 8px;
+            height: 8px;
+            margin: 0 4px;
+            background-color: #f59e0b;
+            border-radius: 50%;
+            display: inline-block;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .loading-dots span:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+        .loading-dots span:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+        @keyframes bounce {
+            0%, 80%, 100% { 
+                transform: scale(0);
+            }
+            40% { 
+                transform: scale(1);
+            }
+        }
+        .progress-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-indicator {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #f59e0b, #f97316);
+            border-radius: 10px;
+            transition: width 0.5s ease;
         }
     </style>
 </head>
-<body class="min-h-screen">
-    <!-- Header -->
-    <header class="bg-black py-4 border-b border-green-500">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fas fa-bitcoin text-green-500 text-3xl"></i>
-                <h1 class="text-2xl font-bold glitch" data-text="BTC EXPLOIT">BTC EXPLOIT</h1>
+<body class="gradient-bg min-h-screen text-gray-100 font-sans">
+    <!-- Enhanced Loading Screen with Dark Overlay -->
+    <div id="loading-screen" class="fixed inset-0 flex items-center justify-center z-50 hidden bg-black bg-opacity-90">
+        <div class="text-center max-w-xs w-full">
+            <div class="flex justify-center mb-8">
+                <div class="relative">
+                    <div class="w-24 h-24 rounded-full bg-yellow-500 bg-opacity-20 flex items-center justify-center">
+                        <i class="fab fa-bitcoin text-4xl text-yellow-500 bitcoin-icon"></i>
+                    </div>
+                    <div class="absolute -inset-2 border-4 border-yellow-500 border-opacity-30 rounded-full animate-ping"></div>
+                </div>
             </div>
-            <nav class="hidden md:flex space-x-6">
-                <a href="#metodo" class="hover:text-green-400 transition">Método</a>
-                <a href="#wallets" class="hover:text-green-400 transition">Wallets</a>
-                <a href="#contato" class="hover:text-green-400 transition">Contato</a>
-                <a href="#faq" class="hover:text-green-400 transition">FAQ</a>
-            </nav>
-            <button class="md:hidden text-green-500">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+            
+            <h2 class="text-2xl font-bold mb-2">Authenticating</h2>
+            <p class="text-gray-400 mb-6">Securely connecting to your wallet</p>
+            
+            <div class="progress-track w-full h-2 mb-6">
+                <div id="progress-indicator" class="progress-indicator"></div>
+            </div>
+            
+            <div class="loading-dots mb-6">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <div class="text-xs text-gray-500 space-y-1">
+                <p>Establishing encrypted connection</p>
+                <p>256-bit SSL security</p>
+                <p>Two-factor authentication</p>
+            </div>
         </div>
-    </header>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="relative py-20 bg-gradient-to-b from-black to-gray-900">
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute inset-0 bg-green-500 mix-blend-overlay"></div>
-        </div>
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6 glitch" data-text="EXPLOIT BITCOIN">EXPLOIT BITCOIN</h2>
-                    <p class="text-xl mb-8 text-green-300">Método exclusivo para multiplicar seus bitcoins de forma rápida e segura.</p>
-                    <div class="flex space-x-4">
-                        <a href="#metodo" class="btn-hacker px-6 py-3 rounded-lg">VER MÉTODO</a>
-                        <a href="#wallets" class="px-6 py-3 rounded-lg border border-green-500 text-green-500 hover:bg-green-900 hover:bg-opacity-30 transition">COMPRAR WALLET</a>
+    <!-- Login Screen -->
+    <div id="login-screen" class="fixed inset-0 flex items-center justify-center z-40">
+        <div class="glass-effect p-8 rounded-xl shadow-2xl w-full max-w-md">
+            <div class="text-center mb-8">
+                <div class="flex justify-center mb-4">
+                    <div class="bg-yellow-500 bg-opacity-20 p-4 rounded-full">
+                        <i class="fab fa-bitcoin text-4xl text-yellow-500 bitcoin-icon"></i>
                     </div>
                 </div>
-                <div class="md:w-1/2">
-                    <div class="terminal mx-auto max-w-md">
-                        <div class="terminal-header flex items-center">
-                            <div class="flex space-x-2 mr-3">
-                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            </div>
-                            <span>root@btc-exploit:~</span>
-                        </div>
-                        <div class="terminal-body font-mono text-sm">
-                            <p class="text-green-400">$ sudo apt-get update</p>
-                            <p class="text-green-400">$ git clone https://github.com/btc-exploit/core.git</p>
-                            <p class="text-green-400">$ cd core</p>
-                            <p class="text-green-400">$ chmod +x exploit.sh</p>
-                            <p class="text-green-400">$ ./exploit.sh --wallet YOUR_WALLET_ADDRESS</p>
-                            <p class="text-green-400">$ Iniciando conexão com a rede botnet...</p>
-                            <p class="text-green-400">$ Conexão estabelecida com 1478 nós</p>
-                            <p class="text-green-400">$ Explorando vulnerabilidades na blockchain...</p>
-                            <p class="text-green-400">$ Vulnerabilidade encontrada!</p>
-                            <p class="text-green-400">$ Iniciando transferência para sua wallet...</p>
-                            <p class="text-green-400 mb-2">$ Transferência concluída: 0.042 BTC</p>
-                            <p class="text-green-500 font-bold typing">$ Aguardando próximo ciclo...</p>
-                        </div>
-                    </div>
+                <h1 class="text-3xl font-bold">Bitcoin Wallet</h1>
+                <p class="text-gray-400 mt-2">Professional Wallet Dashboard</p>
+                <div class="mt-4 price-ticker inline-flex items-center px-4 py-2 rounded-full">
+                    <span class="text-sm mr-2">BTC/USD:</span>
+                    <span class="font-medium">$27,300.00</span>
+                    <span class="ml-2 text-xs price-up">+2.4%</span>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Método Section -->
-    <section id="metodo" class="py-20 bg-black">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-16 glitch" data-text="MÉTODO EXPLOIT BITCOIN">MÉTODO EXPLOIT BITCOIN</h2>
-            
-            <div class="max-w-4xl mx-auto bg-gray-900 p-8 rounded-lg border border-green-500 mb-12">
-                <h3 class="text-2xl font-bold mb-6 text-green-400">Recomendações Importantes:</h3>
-                <p class="mb-6">Recomendamos fortemente utilizar um celular extra para este método. Após cada uso, formate o dispositivo para garantir segurança e anonimato. O celular deve ter apenas uma carteira wallet instalada ou você pode criar uma nova especificamente para este propósito.</p>
-                
-                <div class="bg-gray-800 p-6 rounded-lg mb-8">
-                    <h4 class="text-xl font-bold mb-4 text-green-300">Pré-requisitos:</h4>
-                    <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                            <span>Celular Android com acesso root (recomendado) ou com depuração USB ativada</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                            <span>No mínimo R$ 50,00 em sua carteira wallet antes de iniciar</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                            <span>Conexão estável com a internet</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                            <span>2 aplicativos específicos instalados (listados abaixo)</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <h3 class="text-2xl font-bold mb-6 text-green-400">Passo a Passo:</h3>
-                <div class="space-y-8">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-1/3 mb-4 md:mb-0">
-                            <h4 class="text-xl font-bold text-green-300">1. Preparação do Dispositivo</h4>
-                        </div>
-                        <div class="md:w-2/3">
-                            <p>Formate completamente seu dispositivo Android ou utilize um celular limpo. Instale apenas os aplicativos necessários:</p>
-                            <ul class="mt-3 space-y-2">
-                                <li><span class="font-bold text-green-300">Termux:</span> Terminal avançado para executar nosso script</li>
-                                <li><span class="font-bold text-green-300">BotNet Connector:</span> Para conexão com a rede de dispositivos exploráveis</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-1/3 mb-4 md:mb-0">
-                            <h4 class="text-xl font-bold text-green-300">2. Configuração Inicial</h4>
-                        </div>
-                        <div class="md:w-2/3">
-                            <p>Abra o Termux e execute os seguintes comandos:</p>
-                            <div class="bg-gray-800 p-4 rounded-lg mt-3 font-mono text-sm">
-                                <p class="text-green-400">$ pkg update && pkg upgrade -y</p>
-                                <p class="text-green-400">$ pkg install git python -y</p>
-                                <p class="text-green-400">$ git clone https://github.com/btc-exploit/core.git</p>
-                                <p class="text-green-400">$ cd core</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-1/3 mb-4 md:mb-0">
-                            <h4 class="text-xl font-bold text-green-300">3. Conexão com a BotNet</h4>
-                        </div>
-                        <div class="md:w-2/3">
-                            <p>Abra o aplicativo BotNet Connector e aguarde a conexão com pelo menos 1000 dispositivos. Esta rede é essencial para o exploit funcionar, pois distribuímos a carga de processamento.</p>
-                            <p class="mt-3 text-yellow-300">Atenção: Não feche o aplicativo durante o processo.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-1/3 mb-4 md:mb-0">
-                            <h4 class="text-xl font-bold text-green-300">4. Execução do Exploit</h4>
-                        </div>
-                        <div class="md:w-2/3">
-                            <p>Volte ao Termux e execute o script principal:</p>
-                            <div class="bg-gray-800 p-4 rounded-lg mt-3 font-mono text-sm">
-                                <p class="text-green-400">$ chmod +x exploit.sh</p>
-                                <p class="text-green-400">$ ./exploit.sh --wallet SUA_CARTEIRA_AQUI</p>
-                            </div>
-                            <p class="mt-3">O processo pode levar de 15 a 45 minutos para ser concluído. Durante este tempo, o script irá:</p>
-                            <ul class="mt-2 space-y-1">
-                                <li><i class="fas fa-circle-notch text-green-500 mr-2"></i> Identificar transações vulneráveis na blockchain</li>
-                                <li><i class="fas fa-circle-notch text-green-500 mr-2"></i> Redirecionar frações de BTC para sua carteira</li>
-                                <li><i class="fas fa-circle-notch text-green-500 mr-2"></i> Ofuscar o rastreamento das transações</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-1/3 mb-4 md:mb-0">
-                            <h4 class="text-xl font-bold text-green-300">5. Finalização</h4>
-                        </div>
-                        <div class="md:w-2/3">
-                            <p>Após a conclusão, você receberá uma notificação no Termux com o valor creditado em sua carteira. Recomendamos:</p>
-                            <ul class="mt-3 space-y-2">
-                                <li><i class="fas fa-shield-alt text-green-500 mr-2"></i> Transferir imediatamente os fundos para uma carteira fria</li>
-                                <li><i class="fas fa-eraser text-green-500 mr-2"></i> Formatar o dispositivo antes do próximo uso</li>
-                                <li><i class="fas fa-sync-alt text-green-500 mr-2"></i> Aguardar pelo menos 24 horas antes de repetir o processo</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-12 bg-green-900 bg-opacity-20 p-6 rounded-lg border border-green-500">
-                    <h4 class="text-xl font-bold mb-3 text-green-300">Importante!</h4>
-                    <p>Este método explora vulnerabilidades temporárias na blockchain do Bitcoin. O sucesso depende da sincronização perfeita com nossa rede botnet. Caso encontre dificuldades ou não tenha os aplicativos necessários, entre em contato conosco para obter suporte personalizado.</p>
-                    <p class="mt-3 font-bold">Nunca execute este método em seu dispositivo principal ou sem formatar após o uso.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Wallets Section -->
-    <section id="wallets" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-16 glitch" data-text="WALLETS PRONTAS">WALLETS PRONTAS</h2>
-            
-            <p class="text-center max-w-2xl mx-auto mb-12">Adquira uma wallet pré-configurada e com saldo inicial para começar imediatamente. Todas as wallets são verificadas e possuem histórico limpo.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Wallet 1 -->
-                <div class="card-hacker rounded-lg overflow-hidden pulse">
-                    <div class="bg-green-900 p-4">
-                        <h3 class="text-xl font-bold text-center">WALLET BASIC</h3>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-center mb-6">
-                            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin Wallet" class="h-20">
-                        </div>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Saldo inicial: R$ 50,00</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Pré-configurada para o exploit</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Histórico limpo</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Aplicativos necessários incluídos</span>
-                            </li>
-                        </ul>
-                        <div class="text-center">
-                            <p class="text-3xl font-bold mb-4">R$ 150,00</p>
-                            <button class="btn-hacker px-6 py-3 rounded-lg w-full">COMPRAR AGORA</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Wallet 2 (Popular) -->
-                <div class="card-hacker rounded-lg overflow-hidden transform scale-105 pulse">
-                    <div class="bg-green-500 p-4 text-black">
-                        <h3 class="text-xl font-bold text-center">WALLET PRO</h3>
-                        <p class="text-center text-sm">MAIS POPULAR</p>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-center mb-6">
-                            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin Wallet" class="h-20">
-                        </div>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Saldo inicial: R$ 150,00</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Configuração premium para exploit</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Histórico limpo e verificado</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Aplicativos premium incluídos</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Suporte prioritário 24/7</span>
-                            </li>
-                        </ul>
-                        <div class="text-center">
-                            <p class="text-3xl font-bold mb-4">R$ 350,00</p>
-                            <button class="btn-hacker px-6 py-3 rounded-lg w-full">COMPRAR AGORA</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Wallet 3 -->
-                <div class="card-hacker rounded-lg overflow-hidden pulse">
-                    <div class="bg-green-900 p-4">
-                        <h3 class="text-xl font-bold text-center">WALLET VIP</h3>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-center mb-6">
-                            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin Wallet" class="h-20">
-                        </div>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Saldo inicial: R$ 500,00</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Configuração VIP para exploit</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Histórico limpo e verificado</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Aplicativos VIP incluídos</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Suporte VIP 24/7</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Dispositivo pré-configurado opcional</span>
-                            </li>
-                        </ul>
-                        <div class="text-center">
-                            <p class="text-3xl font-bold mb-4">R$ 1.000,00</p>
-                            <button class="btn-hacker px-6 py-3 rounded-lg w-full">COMPRAR AGORA</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-16 bg-black p-8 rounded-lg border border-green-500 max-w-4xl mx-auto">
-                <h3 class="text-2xl font-bold mb-6 text-center text-green-400">POR QUE COMPRAR UMA WALLET PRONTA?</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="flex items-start">
-                        <div class="bg-green-500 text-black p-2 rounded-full mr-4">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold mb-2">Segurança Garantida</h4>
-                            <p>Nossas wallets passam por rigorosos processos de limpeza e são configuradas para máxima segurança e anonimato.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="bg-green-500 text-black p-2 rounded-full mr-4">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold mb-2">Pronto para Uso</h4>
-                            <p>Economize tempo com a configuração. Tudo já está preparado para você começar a usar o método imediatamente.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="bg-green-500 text-black p-2 rounded-full mr-4">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold mb-2">Proteção Anti-rastreamento</h4>
-                            <p>Implementamos técnicas avançadas para dificultar o rastreamento das transações.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="bg-green-500 text-black p-2 rounded-full mr-4">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold mb-2">Suporte Especializado</h4>
-                            <p>Assistência personalizada para garantir que você aproveite ao máximo seu investimento.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contato Section -->
-    <section id="contato" class="py-20 bg-black">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-16 glitch" data-text="CONTATO & SUPORTE">CONTATO & SUPORTE</h2>
-            
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+            <form id="login-form" class="space-y-6">
                 <div>
-                    <h3 class="text-2xl font-bold mb-6 text-green-400">Entre em Contato</h3>
-                    <p class="mb-8">Precisa de ajuda com o método? Tem dúvidas sobre as wallets? Nossa equipe está disponível 24/7 para te ajudar.</p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-center">
-                            <div class="bg-green-500 text-black p-3 rounded-full mr-4">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold">Email</h4>
-                                <p class="text-green-300">suporte@btc-exploit.io</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <div class="bg-green-500 text-black p-3 rounded-full mr-4">
-                                <i class="fab fa-telegram"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold">Telegram</h4>
-                                <p class="text-green-300">@btc_exploit_suporte</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <div class="bg-green-500 text-black p-3 rounded-full mr-4">
-                                <i class="fas fa-key"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold">PGP Key</h4>
-                                <p class="text-sm text-gray-400">Disponível sob solicitação para comunicação segura</p>
-                            </div>
-                        </div>
-                    </div>
+                    <label for="username" class="block text-sm font-medium mb-2">Username</label>
+                    <input type="text" id="username" class="w-full input-field px-4 py-3 rounded-lg focus:ring-0 outline-none" placeholder="Enter your username" required>
                 </div>
-                
                 <div>
-                    <div class="card-hacker p-8 rounded-lg h-full">
-                        <h3 class="text-2xl font-bold mb-6 text-green-400">Mensagem Direta</h3>
-                        <form>
-                            <div class="mb-4">
-                                <label class="block mb-2">Seu Nome</label>
-                                <input type="text" class="w-full bg-gray-800 border border-green-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500">
-                            </div>
-                            <div class="mb-4">
-                                <label class="block mb-2">Seu Contato (Email ou Telegram)</label>
-                                <input type="text" class="w-full bg-gray-800 border border-green-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500">
-                            </div>
-                            <div class="mb-4">
-                                <label class="block mb-2">Assunto</label>
-                                <select class="w-full bg-gray-800 border border-green-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500">
-                                    <option>Dúvida sobre o método</option>
-                                    <option>Problemas com wallet</option>
-                                    <option>Suporte técnico</option>
-                                    <option>Outro</option>
-                                </select>
-                            </div>
-                            <div class="mb-6">
-                                <label class="block mb-2">Mensagem</label>
-                                <textarea rows="4" class="w-full bg-gray-800 border border-green-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
-                            </div>
-                            <button type="submit" class="btn-hacker px-6 py-3 rounded-lg w-full">ENVIAR MENSAGEM</button>
-                        </form>
-                    </div>
+                    <label for="password" class="block text-sm font-medium mb-2">Password</label>
+                    <input type="password" id="password" class="w-full input-field px-4 py-3 rounded-lg focus:ring-0 outline-none" placeholder="Enter your password" required>
                 </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-600 bg-gray-700 focus:ring-yellow-500">
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-400">Remember me</label>
+                    </div>
+                    <a href="#" class="text-sm text-yellow-500 hover:underline">Forgot password?</a>
+                </div>
+                <button type="submit" class="w-full btn-primary py-3 px-4 rounded-lg font-semibold transition duration-300">
+                    Login to Dashboard
+                </button>
+            </form>
+            <div class="mt-6 pt-4 border-t border-gray-700 text-center">
+                <p class="text-sm text-gray-400">Don't have an account? <a href="#" class="text-yellow-500 hover:underline">Contact sales</a></p>
+            </div>
+            <div class="mt-6 text-xs text-gray-500 text-center">
+                <p>By logging in, you agree to our <a href="#" class="text-yellow-500 hover:underline">Terms</a> and <a href="#" class="text-yellow-500 hover:underline">Privacy Policy</a></p>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-16 glitch" data-text="PERGUNTAS FREQUENTES">PERGUNTAS FREQUENTES</h2>
-            
-            <div class="max-w-3xl mx-auto space-y-6">
-                <!-- FAQ Item 1 -->
-                <div class="card-hacker rounded-lg overflow-hidden">
-                    <button class="faq-toggle w-full text-left p-6 flex justify-between items-center">
-                        <h3 class="text-lg font-bold">O método é seguro e anônimo?</h3>
-                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content px-6 pb-6 hidden">
-                        <p>Sim, desde que todas as recomendações sejam seguidas à risca. Utilizamos técnicas avançadas de ofuscação e a rede botnet distribuída garante que nenhum IP ou dispositivo possa ser rastreado diretamente até você. A recomendação de usar um dispositivo separado e formatá-lo após o uso é crucial para manter o anonimato.</p>
-                    </div>
+    <!-- Main Dashboard (Hidden until login) -->
+    <div id="dashboard" class="hidden min-h-screen">
+        <!-- Header -->
+        <header class="dashboard-header py-4 px-6 flex justify-between items-center sticky top-0 z-40">
+            <div class="flex items-center space-x-3">
+                <div class="bg-yellow-500 bg-opacity-20 p-2 rounded-lg">
+                    <i class="fab fa-bitcoin text-xl text-yellow-500"></i>
                 </div>
-                
-                <!-- FAQ Item 2 -->
-                <div class="card-hacker rounded-lg overflow-hidden">
-                    <button class="faq-toggle w-full text-left p-6 flex justify-between items-center">
-                        <h3 class="text-lg font-bold">Por que preciso depositar R$ 50,00 antes de começar?</h3>
-                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content px-6 pb-6 hidden">
-                        <p>O valor inicial serve como "isca" para o algoritmo da blockchain. Transações muito pequenas ou wallets vazias são frequentemente ignoradas pelos sistemas de segurança. Os R$ 50,00 garantem que sua wallet seja tratada como legítima pelo sistema, permitindo que o exploit funcione corretamente.</p>
-                    </div>
+                <span class="text-xl font-bold">Bitcoin Wallet</span>
+                <div class="ml-4 price-ticker inline-flex items-center px-3 py-1 rounded-full text-sm">
+                    <span class="mr-2">BTC:</span>
+                    <span class="font-medium">$27,300.00</span>
+                    <span class="ml-2 text-xs price-up">+2.4%</span>
                 </div>
-                
-                <!-- FAQ Item 3 -->
-                <div class="card-hacker rounded-lg overflow-hidden">
-                    <button class="faq-toggle w-full text-left p-6 flex justify-between items-center">
-                        <h3 class="text-lg font-bold">Quanto posso ganhar com esse método?</h3>
-                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative group">
+                    <button class="flex items-center space-x-2 bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg transition">
+                        <div class="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center">
+                            <span class="font-medium text-gray-900">A</span>
+                        </div>
+                        <span class="font-medium">Admin</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
                     </button>
-                    <div class="faq-content px-6 pb-6 hidden">
-                        <p>Os resultados variam conforme a disponibilidade de vulnerabilidades na rede. Em média, nossos usuários reportam ganhos entre R$ 300,00 e R$ 2.500,00 por execução bem-sucedida. O método pode ser repetido, mas recomendamos intervalos de pelo menos 24 horas entre cada execução e sempre utilizar um dispositivo limpo.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 4 -->
-                <div class="card-hacker rounded-lg overflow-hidden">
-                    <button class="faq-toggle w-full text-left p-6 flex justify-between items-center">
-                        <h3 class="text-lg font-bold">Posso usar o mesmo celular várias vezes?</h3>
-                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content px-6 pb-6 hidden">
-                        <p>Sim, mas apenas se você formatar completamente o dispositivo após cada uso. Recomendamos fortemente o uso de um celular dedicado apenas para este propósito. Dispositivos usados repetidamente sem formatação adequada podem acumular dados que comprometem a segurança e o anonimato.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 5 -->
-                <div class="card-hacker rounded-lg overflow-hidden">
-                    <button class="faq-toggle w-full text-left p-6 flex justify-between items-center">
-                        <h3 class="text-lg font-bold">Como obtenho os aplicativos necessários?</h3>
-                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content px-6 pb-6 hidden">
-                        <p>Os aplicativos Termux e BotNet Connector são fornecidos por nós após a compra de qualquer wallet. Eles são versões modificadas especificamente para nosso método e não estão disponíveis em lojas de aplicativos convencionais. Caso tenha problemas para instalá-los, nosso suporte pode guiá-lo passo a passo.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 6 -->
-                <div class="card-hacker rounded-lg overflow-hidden">
-                    <button class="faq-toggle w-full text-left p-6 flex justify-between items-center">
-                        <h3 class="text-lg font-bold">Quanto tempo leva para ver os resultados?</h3>
-                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content px-6 pb-6 hidden">
-                        <p>O processo completo geralmente leva entre 30 minutos e 2 horas, dependendo da velocidade da sua conexão e do número de dispositivos disponíveis na rede botnet. Você verá o saldo em sua wallet assim que o exploit for concluído com sucesso. Em casos raros, pode levar até 12 horas para a confirmação na blockchain.</p>
+                    <div class="absolute right-0 mt-2 w-48 dropdown-menu rounded-lg py-1 z-50 hidden group-hover:block">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-700 transition flex items-center space-x-2">
+                            <i class="fas fa-user text-sm"></i>
+                            <span>Profile</span>
+                        </a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-700 transition flex items-center space-x-2">
+                            <i class="fas fa-cog text-sm"></i>
+                            <span>Settings</span>
+                        </a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-700 transition flex items-center space-x-2">
+                            <i class="fas fa-shield-alt text-sm"></i>
+                            <span>Security</span>
+                        </a>
+                        <div class="border-t border-gray-700 my-1"></div>
+                        <a href="#" id="logout-btn" class="block px-4 py-2 hover:bg-gray-700 transition flex items-center space-x-2 text-red-400">
+                            <i class="fas fa-sign-out-alt text-sm"></i>
+                            <span>Logout</span>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- Footer -->
-    <footer class="bg-black py-12 border-t border-green-900">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <div class="flex items-center space-x-2">
-                        <i class="fas fa-bitcoin text-green-500 text-2xl"></i>
-                        <h2 class="text-xl font-bold">BTC EXPLOIT</h2>
+        <!-- Main Content -->
+        <main class="container mx-auto px-4 py-8">
+            <!-- Wallet Summary Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Total Balance Card -->
+                <div class="card-gradient p-6 rounded-xl shadow-lg">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-400 text-sm">Total Balance</p>
+                            <h2 class="text-3xl font-bold mt-2">0.452819 BTC</h2>
+                            <p class="text-gray-400 mt-1">≈ $12,345.67</p>
+                        </div>
+                        <div class="bg-yellow-500 bg-opacity-20 p-3 rounded-full">
+                            <i class="fas fa-wallet text-2xl text-yellow-500"></i>
+                        </div>
                     </div>
-                    <p class="mt-2 text-sm text-gray-500">Tecnologia avançada em exploração blockchain</p>
+                    <div class="mt-6 pt-4 border-t border-gray-700 border-opacity-50">
+                        <div class="flex justify-between items-center">
+                            <p class="text-xs text-gray-400">Last transaction: 0.002341 BTC</p>
+                            <div class="tooltip">
+                                <i class="fas fa-info-circle text-gray-400 text-xs"></i>
+                                <span class="tooltip-text">Updated every 10 minutes</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="flex space-x-6 mb-6 md:mb-0">
-                    <a href="#" class="text-gray-400 hover:text-green-500 transition">
-                        <i class="fab fa-telegram text-xl"></i>
+
+                <!-- Available Balance Card -->
+                <div class="card-gradient-2 p-6 rounded-xl shadow-lg">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-400 text-sm">Available Balance</p>
+                            <h2 class="text-3xl font-bold mt-2">0.342819 BTC</h2>
+                            <p class="text-gray-400 mt-1">≈ $9,345.67</p>
+                        </div>
+                        <div class="bg-blue-500 bg-opacity-20 p-3 rounded-full">
+                            <i class="fas fa-coins text-2xl text-blue-500"></i>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-700 border-opacity-50">
+                        <div class="flex justify-between items-center">
+                            <p class="text-xs text-gray-400">Ready to withdraw or send</p>
+                            <div class="tooltip">
+                                <i class="fas fa-info-circle text-gray-400 text-xs"></i>
+                                <span class="tooltip-text">Immediately available funds</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frozen Balance Card -->
+                <div class="card-gradient-3 p-6 rounded-xl shadow-lg">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-400 text-sm">Pending Balance</p>
+                            <h2 class="text-3xl font-bold mt-2">0.110000 BTC</h2>
+                            <p class="text-gray-400 mt-1">≈ $3,000.00</p>
+                        </div>
+                        <div class="bg-cyan-500 bg-opacity-20 p-3 rounded-full">
+                            <i class="fas fa-clock text-2xl text-cyan-500"></i>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-700 border-opacity-50">
+                        <div class="flex justify-between items-center">
+                            <p class="text-xs text-gray-400">Pending transaction confirmations</p>
+                            <div class="tooltip">
+                                <i class="fas fa-info-circle text-gray-400 text-xs"></i>
+                                <span class="tooltip-text">Will be available after confirmation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <button id="receive-btn" class="btn-secondary py-3 px-4 rounded-lg font-semibold flex items-center justify-center space-x-2 transition duration-300">
+                    <i class="fas fa-qrcode"></i>
+                    <span>Receive</span>
+                </button>
+                <button id="send-btn" class="btn-primary py-3 px-4 rounded-lg font-semibold flex items-center justify-center space-x-2 transition duration-300">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Send</span>
+                </button>
+            </div>
+
+            <!-- Transaction History -->
+            <div class="glass-effect rounded-xl shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-6">Recent Transactions</h2>
+
+                <div class="space-y-4">
+                    <!-- Transaction Item (Received) -->
+                    <div class="transaction-item bg-gray-800 bg-opacity-50 rounded-lg p-4 flex justify-between items-center">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-green-500 bg-opacity-20 p-3 rounded-full">
+                                <i class="fas fa-qrcode text-green-400"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Received from 3FZbgi...WwrDn</p>
+                                <p class="text-sm text-gray-400">Today, 10:45 AM</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-medium text-green-400">+0.002341 BTC</p>
+                            <p class="text-sm text-gray-400">≈ $63.87</p>
+                        </div>
+                    </div>
+
+                    <!-- Transaction Item (Received) -->
+                    <div class="transaction-item bg-gray-800 bg-opacity-50 rounded-lg p-4 flex justify-between items-center">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-green-500 bg-opacity-20 p-3 rounded-full">
+                                <i class="fas fa-qrcode text-green-400"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Received from 1BvBMs...YdU</p>
+                                <p class="text-sm text-gray-400">2 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-medium text-green-400">+0.001500 BTC</p>
+                            <p class="text-sm text-gray-400">≈ $40.95</p>
+                        </div>
+                    </div>
+
+                    <!-- Transaction Item (Received) -->
+                    <div class="transaction-item bg-gray-800 bg-opacity-50 rounded-lg p-4 flex justify-between items-center">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-green-500 bg-opacity-20 p-3 rounded-full">
+                                <i class="fas fa-qrcode text-green-400"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Received from bc1qxy...kg7g</p>
+                                <p class="text-sm text-gray-400">5 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-medium text-green-400">+0.003200 BTC</p>
+                            <p class="text-sm text-gray-400">≈ $87.36</p>
+                        </div>
+                    </div>
+
+                    <!-- Transaction Item (Received) -->
+                    <div class="transaction-item bg-gray-800 bg-opacity-50 rounded-lg p-4 flex justify-between items-center">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-green-500 bg-opacity-20 p-3 rounded-full">
+                                <i class="fas fa-qrcode text-green-400"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Received from 1A1zP1...QP2HoC</p>
+                                <p class="text-sm text-gray-400">Yesterday, 3:22 PM</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-medium text-green-400">+0.010000 BTC</p>
+                            <p class="text-sm text-gray-400">≈ $273.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer py-6 px-6 mt-8">
+            <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <div class="bg-yellow-500 bg-opacity-20 p-2 rounded-lg">
+                        <i class="fab fa-bitcoin text-lg text-yellow-500"></i>
+                    </div>
+                    <span class="font-medium">Bitcoin Wallet</span>
+                    <span class="text-xs text-gray-400">v2.3.1</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition flex items-center">
+                        <i class="fas fa-shield-alt mr-1 text-xs"></i>
+                        <span>Security</span>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-green-500 transition">
-                        <i class="fab fa-github text-xl"></i>
+                    <a href="#" class="text-gray-400 hover:text-white transition flex items-center">
+                        <i class="fas fa-file-alt mr-1 text-xs"></i>
+                        <span>Terms</span>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-green-500 transition">
-                        <i class="fas fa-envelope text-xl"></i>
+                    <a href="#" class="text-gray-400 hover:text-white transition flex items-center">
+                        <i class="fas fa-lock mr-1 text-xs"></i>
+                        <span>Privacy</span>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition flex items-center">
+                        <i class="fas fa-headset mr-1 text-xs"></i>
+                        <span>Support</span>
                     </a>
                 </div>
-                
-                <div class="text-center md:text-right">
-                    <p class="text-sm text-gray-500">© 2023 BTC Exploit. Todos os direitos reservados.</p>
-                    <p class="text-xs mt-1 text-gray-600">Este site é apenas para fins educacionais.</p>
+                <div class="mt-4 md:mt-0 text-sm text-gray-500 flex items-center">
+                    <i class="fas fa-circle text-xs mr-2 text-green-500"></i>
+                    <span>Secure Connection</span>
+                </div>
+            </div>
+            <div class="container mx-auto mt-4 text-center md:text-left">
+                <p class="text-xs text-gray-600">© 2023 Bitcoin Wallet Professional. All rights reserved. Bitcoin is a trademark of Bitcoin Project.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Receive Modal -->
+    <div id="receive-modal" class="modal fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+        <div class="glass-effect rounded-xl p-8 w-full max-w-md modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold">Receive Bitcoin</h3>
+                <button id="close-receive-modal" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="text-center">
+                <div class="qr-code mx-auto mb-6 flex items-center justify-center">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" alt="QR Code">
+                </div>
+                <p class="text-sm text-gray-400 mb-4">Scan this QR code or copy the address below</p>
+                <div class="bg-gray-800 p-3 rounded-lg mb-6 flex items-center justify-between">
+                    <code class="text-sm wallet-address overflow-x-auto">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</code>
+                    <button id="copy-address" class="ml-2 text-yellow-500 hover:text-yellow-400">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                <div class="text-xs text-gray-500 bg-gray-800 bg-opacity-50 p-3 rounded-lg">
+                    <p class="mb-1">Only send Bitcoin (BTC) to this address.</p>
+                    <p>Sending any other asset will result in permanent loss.</p>
+                </div>
+                <div class="mt-6 flex justify-center space-x-4">
+                    <button class="text-sm text-yellow-500 hover:underline flex items-center">
+                        <i class="fas fa-print mr-1"></i>
+                        <span>Print QR Code</span>
+                    </button>
+                    <button class="text-sm text-yellow-500 hover:underline flex items-center">
+                        <i class="fas fa-share-alt mr-1"></i>
+                        <span>Share Address</span>
+                    </button>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+
+    <!-- Send Modal -->
+    <div id="send-modal" class="modal fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+        <div class="glass-effect rounded-xl p-8 w-full max-w-md modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold">Send Bitcoin</h3>
+                <button id="close-send-modal" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="send-form" class="space-y-4">
+                <div>
+                    <label for="recipient" class="block text-sm font-medium mb-2">Recipient Address</label>
+                    <input type="text" id="recipient" class="w-full input-field px-4 py-3 rounded-lg focus:ring-0 outline-none" placeholder="Enter Bitcoin address" required>
+                    <p id="address-error" class="text-red-500 text-xs mt-1 hidden">Please enter a valid Bitcoin address</p>
+                </div>
+                <div>
+                    <label for="amount" class="block text-sm font-medium mb-2">Amount</label>
+                    <div class="flex">
+                        <input type="number" step="0.00000001" id="amount" class="w-full input-field px-4 py-3 rounded-l-lg focus:ring-0 outline-none" placeholder="0.00" required>
+                        <span class="bg-gray-700 px-4 py-3 rounded-r-lg">BTC</span>
+                    </div>
+                    <div class="flex justify-between mt-1">
+                        <p class="text-xs text-gray-400">Available: <span id="available-balance">0.342819</span> BTC</p>
+                        <button type="button" id="max-btn" class="text-xs text-yellow-500 hover:underline">Max</button>
+                    </div>
+                    <p id="amount-error" class="text-red-500 text-xs mt-1 hidden">Amount exceeds available balance</p>
+                </div>
+
+                <!-- Bitcoin Exchange Rate -->
+                <div class="bg-gray-800 bg-opacity-50 p-4 rounded-lg flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <i class="fab fa-bitcoin text-yellow-500 text-xl"></i>
+                        <span class="text-sm">1 BTC ≈</span>
+                        <span class="font-medium">$27,300.00</span>
+                    </div>
+                    <i class="fas fa-exchange-alt text-gray-400"></i>
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-dollar-sign text-green-500 text-xl"></i>
+                        <span id="usd-amount" class="font-medium">$0.00</span>
+                    </div>
+                </div>
+
+                <!-- Fee Section -->
+                <div class="fee-box p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium">Network Fee</span>
+                        <span id="fee-amount" class="font-bold text-yellow-500">0.000500 BTC</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-400">Fixed platform fee</span>
+                        <span class="text-xs text-gray-400">≈ $13.65</span>
+                    </div>
+                </div>
+
+                <!-- Total Section -->
+                <div class="bg-gray-800 bg-opacity-50 p-4 rounded-lg flex justify-between items-center">
+                    <span class="text-sm font-medium">Total to Send</span>
+                    <div class="text-right">
+                        <span id="total-btc" class="font-bold">0.000000 BTC</span>
+                        <span id="total-usd" class="text-xs block text-gray-400">≈ $0.00</span>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full btn-primary py-3 px-4 rounded-lg font-semibold transition duration-300">
+                        Confirm & Send Bitcoin
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Payment Confirmation Modal -->
+    <div id="payment-modal" class="modal fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+        <div class="glass-effect rounded-xl p-8 w-full max-w-md payment-modal">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold">Payment Required</h3>
+                <button id="close-payment-modal" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="highlight-box p-4 rounded-lg mb-6">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-medium">Fixed Transaction Fee</span>
+                    <span class="font-bold text-yellow-500">$65.00</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-xs text-gray-400">≈ 0.002380 BTC</span>
+                    <span class="text-xs text-gray-400">(1 BTC = $27,300.00)</span>
+                </div>
+            </div>
+
+            <div class="fee-box p-4 rounded-lg mb-6">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-medium">Network Fee</span>
+                    <span class="font-bold text-yellow-500">0.000500 BTC</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-xs text-gray-400">Fixed platform fee</span>
+                    <span class="text-xs text-gray-400">≈ $13.65</span>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 bg-opacity-50 p-4 rounded-lg mb-6">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-medium">Total Payment Required</span>
+                    <span class="font-bold">$78.65</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-xs text-gray-400">≈ 0.002880 BTC</span>
+                    <span class="text-xs text-gray-400">(1 BTC = $27,300.00)</span>
+                </div>
+            </div>
+
+            <div class="text-center mb-6">
+                <div class="qr-code mx-auto mb-4 flex items-center justify-center">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa?amount=0.00288" alt="QR Code">
+                </div>
+                <p class="text-sm text-gray-400 mb-2">Scan this QR code or send payment to:</p>
+                <div class="bg-gray-800 p-3 rounded-lg mb-4 flex items-center justify-between">
+                    <code class="text-sm wallet-address overflow-x-auto">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</code>
+                    <button id="copy-payment-address" class="ml-2 text-yellow-500 hover:text-yellow-400">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                <p class="text-xs text-gray-400">Amount: 0.002880 BTC ($78.65)</p>
+            </div>
+
+            <div class="text-center text-xs text-gray-500 mb-4">
+                <p>After payment, the Bitcoin will be automatically redirected to your wallet.</p>
+                <p>Transaction usually completes within 10-30 minutes.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Notification -->
+    <div id="success-notification" class="fixed top-4 right-4 success-notification text-white px-6 py-3 rounded-lg shadow-lg flex items-center space-x-3 z-50 hidden">
+        <i class="fas fa-check-circle"></i>
+        <span id="success-message">Operation completed successfully!</span>
+    </div>
+
+    <!-- Error Notification -->
+    <div id="error-notification" class="fixed top-4 right-4 error-notification text-white px-6 py-3 rounded-lg shadow-lg flex items-center space-x-3 z-50 hidden">
+        <i class="fas fa-exclamation-circle"></i>
+        <span id="error-message">An error occurred. Please try again.</span>
+    </div>
 
     <script>
-        // FAQ toggle functionality
-        document.querySelectorAll('.faq-toggle').forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const icon = button.querySelector('i');
+        // Login Functionality with Enhanced Loading Screen
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if(username === 'admin' && password === 'admin123') {
+                // Show loading screen with animation
+                document.getElementById('loading-screen').classList.remove('hidden');
                 
-                content.classList.toggle('hidden');
-                icon.classList.toggle('transform');
-                icon.classList.toggle('rotate-180');
+                // Animate progress bar
+                const progressBar = document.getElementById('progress-indicator');
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += 5;
+                    progressBar.style.width = `${progress}%`;
+                    
+                    if(progress >= 100) {
+                        clearInterval(interval);
+                        
+                        // Complete authentication
+                        setTimeout(() => {
+                            document.getElementById('login-screen').classList.add('hidden');
+                            document.getElementById('loading-screen').classList.add('hidden');
+                            document.getElementById('dashboard').classList.remove('hidden');
+
+                            // Show welcome notification
+                            document.getElementById('success-message').textContent = 'Welcome back, Admin!';
+                            const notification = document.getElementById('success-notification');
+                            notification.classList.remove('hidden');
+
+                            setTimeout(() => {
+                                notification.classList.add('hidden');
+                            }, 3000);
+                        }, 500);
+                    }
+                }, 100);
+            } else {
+                document.getElementById('error-message').textContent = 'Invalid credentials. Please try again.';
+                const notification = document.getElementById('error-notification');
+                notification.classList.remove('hidden');
+
+                setTimeout(() => {
+                    notification.classList.add('hidden');
+                }, 3000);
+            }
+        });
+
+        // Logout Functionality
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            document.getElementById('login-screen').classList.remove('hidden');
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        });
+
+        // Modal Controls
+        document.getElementById('receive-btn').addEventListener('click', function() {
+            document.getElementById('receive-modal').classList.remove('hidden');
+        });
+
+        document.getElementById('close-receive-modal').addEventListener('click', function() {
+            document.getElementById('receive-modal').classList.add('hidden');
+        });
+
+        document.getElementById('send-btn').addEventListener('click', function() {
+            document.getElementById('send-modal').classList.remove('hidden');
+            // Reset form
+            document.getElementById('send-form').reset();
+            document.getElementById('address-error').classList.add('hidden');
+            document.getElementById('amount-error').classList.add('hidden');
+            document.getElementById('usd-amount').textContent = '$0.00';
+            document.getElementById('total-btc').textContent = '0.000000 BTC';
+            document.getElementById('total-usd').textContent = '≈ $0.00';
+        });
+
+        document.getElementById('close-send-modal').addEventListener('click', function() {
+            document.getElementById('send-modal').classList.add('hidden');
+        });
+
+        // Copy Address Functionality
+        document.getElementById('copy-address').addEventListener('click', function() {
+            const address = '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa';
+            navigator.clipboard.writeText(address);
+
+            // Show success notification
+            document.getElementById('success-message').textContent = 'Address copied to clipboard!';
+            const notification = document.getElementById('success-notification');
+            notification.classList.remove('hidden');
+
+            setTimeout(() => {
+                notification.classList.add('hidden');
+            }, 3000);
+        });
+
+        // Copy Payment Address Functionality
+        document.getElementById('copy-payment-address').addEventListener('click', function() {
+            const address = '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa';
+            navigator.clipboard.writeText(address);
+
+            // Show success notification
+            document.getElementById('success-message').textContent = 'Payment address copied to clipboard!';
+            const notification = document.getElementById('success-notification');
+            notification.classList.remove('hidden');
+
+            setTimeout(() => {
+                notification.classList.add('hidden');
+            }, 3000);
+        });
+
+        // Bitcoin Address Validation
+        function validateBitcoinAddress(address) {
+            // Basic regex for Bitcoin addresses (legacy, segwit, native segwit)
+            const regex = /^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$/;
+            return regex.test(address);
+        }
+
+        // Amount Calculation and Validation
+        document.getElementById('amount').addEventListener('input', function() {
+            const amount = parseFloat(this.value) || 0;
+            const availableBalance = parseFloat(document.getElementById('available-balance').textContent);
+            const fee = 0.0005; // Fixed fee in BTC
+            const btcPrice = 27300; // BTC price in USD
+
+            // Calculate USD equivalent
+            const usdAmount = amount * btcPrice;
+            document.getElementById('usd-amount').textContent = `$${usdAmount.toFixed(2)}`;
+
+            // Calculate total (amount + fee)
+            const totalBtc = amount + fee;
+            const totalUsd = totalBtc * btcPrice;
+
+            document.getElementById('total-btc').textContent = `${totalBtc.toFixed(6)} BTC`;
+            document.getElementById('total-usd').textContent = `≈ $${totalUsd.toFixed(2)}`;
+
+            // Validate amount doesn't exceed balance
+            if (amount > availableBalance) {
+                document.getElementById('amount-error').classList.remove('hidden');
+            } else {
+                document.getElementById('amount-error').classList.add('hidden');
+            }
+        });
+
+        // Max button functionality
+        document.getElementById('max-btn').addEventListener('click', function() {
+            const availableBalance = parseFloat(document.getElementById('available-balance').textContent);
+            const fee = 0.0005; // Fixed fee in BTC
+            const maxAmount = availableBalance - fee;
+
+            if (maxAmount > 0) {
+                document.getElementById('amount').value = maxAmount.toFixed(8);
+                // Trigger input event to update calculations
+                document.getElementById('amount').dispatchEvent(new Event('input'));
+            } else {
+                document.getElementById('error-message').textContent = 'Insufficient funds to cover the transaction fee.';
+                const notification = document.getElementById('error-notification');
+                notification.classList.remove('hidden');
+
+                setTimeout(() => {
+                    notification.classList.add('hidden');
+                }, 3000);
+            }
+        });
+
+        // Send Form Submission with Validation and Payment Modal
+        document.getElementById('send-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const recipient = document.getElementById('recipient').value;
+            const amount = parseFloat(document.getElementById('amount').value) || 0;
+            const availableBalance = parseFloat(document.getElementById('available-balance').textContent);
+
+            // Validate Bitcoin address
+            if (!validateBitcoinAddress(recipient)) {
+                document.getElementById('address-error').classList.remove('hidden');
+                return;
+            } else {
+                document.getElementById('address-error').classList.add('hidden');
+            }
+
+            // Validate amount
+            if (amount <= 0 || amount > availableBalance) {
+                document.getElementById('amount-error').classList.remove('hidden');
+                return;
+            } else {
+                document.getElementById('amount-error').classList.add('hidden');
+            }
+
+            // Show payment modal instead of processing immediately
+            document.getElementById('send-modal').classList.add('hidden');
+            document.getElementById('payment-modal').classList.remove('hidden');
+        });
+
+        // Close modals when clicking outside
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if(e.target === modal) {
+                    modal.classList.add('hidden');
+                }
             });
         });
-        
-        // Terminal typing animation
-        const terminalTexts = [
-            "$ Transferência concluída: 0.057 BTC",
-            "$ Transferência concluída: 0.032 BTC",
-            "$ Transferência concluída: 0.041 BTC"
-        ];
-        
-        let currentText = 0;
-        const terminalLine = document.querySelector('.typing');
-        
-        function changeTerminalText() {
-            terminalLine.classList.remove('typing');
-            setTimeout(() => {
-                terminalLine.textContent = terminalTexts[currentText];
-                currentText = (currentText + 1) % terminalTexts.length;
-                setTimeout(() => {
-                    terminalLine.textContent = "$ Aguardando próximo ciclo...";
-                    terminalLine.classList.add('typing');
-                }, 2000);
-            }, 1000);
-        }
-        
-        setInterval(changeTerminalText, 8000);
-        
-        // Mobile menu toggle (placeholder)
-        document.querySelector('.md\\:hidden').addEventListener('click', () => {
-            alert('Menu mobile será implementado aqui');
+
+        // Close payment modal button
+        document.getElementById('close-payment-modal').addEventListener('click', function() {
+            document.getElementById('payment-modal').classList.add('hidden');
         });
+
+        // Simulate price ticker movement
+        function updatePriceTicker() {
+            const priceElements = document.querySelectorAll('.price-ticker span:nth-child(2)');
+            const changeElements = document.querySelectorAll('.price-ticker span:nth-child(3)');
+
+            // Simulate small price changes
+            const currentPrice = 27300;
+            const change = (Math.random() - 0.5) * 200; // Random change between -100 and +100
+            const newPrice = currentPrice + change;
+            const percentChange = (change / currentPrice) * 100;
+
+            priceElements.forEach(el => {
+                el.textContent = `$${newPrice.toFixed(2)}`;
+            });
+
+            changeElements.forEach(el => {
+                el.textContent = `${percentChange > 0 ? '+' : ''}${percentChange.toFixed(2)}%`;
+                el.className = percentChange > 0 ? 'ml-2 text-xs price-up' :
+                                  percentChange < 0 ? 'ml-2 text-xs price-down' :
+                                  'ml-2 text-xs price-neutral';
+            });
+
+            setTimeout(updatePriceTicker, 5000);
+        }
+
+        // Start price ticker simulation
+        updatePriceTicker();
     </script>
 </body>
 </html>
